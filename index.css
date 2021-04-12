@@ -34,7 +34,6 @@ body {
 @media screen and (max-width: 650px) {
   body{
     height: 100vh;
-    justify-content: space-evenly;
   }
   .quiz{
     width: 90%;
