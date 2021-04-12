@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="reset.css" />
+    <link rel="stylesheet" href="index.css" />
+    <script
+      src="https://kit.fontawesome.com/7752253787.js"
+      crossorigin="anonymous"
+    ></script>
+    <title>Sketch.Dev</title>
+  </head>
+  <body>
+    <image class="logo" src="./sketchdev-logo.png" />
+    <span class="score">현재 점수 : 0</span>
+    <div class="thumbs">
+      <i id="thumbsUp" class="far fa-thumbs-up fa-2x"></i>
+      <i id="thumbsDown" class="far fa-thumbs-down fa-2x"></i>
+    </div>
+    <div class="quiz">
+      <img class="quiz__image" src="./catch-mind.png" />
+      <form class="quiz__form">
+        <input
+          class="quiz__form__answer"
+          type="text"
+          required
+          placeholder="답을 입력해주세요"
+        />
+        <button class="btn submit">제출</button>
+      </form>
+      <button class="btn pass">패스</button>
+    </div>
+    <script src="index.js"></script>
+  </body>
+</html>
