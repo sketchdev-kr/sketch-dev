@@ -45,13 +45,25 @@ body {
   .thumbs {
     width: 90%;
   }
+  .quiz__image__data{
+    position: relative;
+    bottom: 8px;
+    right: 25px;
+  }
 }
 .quiz__image {
+  background-color: whitesmoke;
+  display:flex;
+  justify-content: center;
   width: 100%;
   border: 6px solid gray;
   border-radius: 30px;
   background-size: cover;
   box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+.quiz__image__data{
+  width: inherit;
+  height: inherit;
 }
 
 .quiz__form {

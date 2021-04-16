@@ -1,0 +1,47 @@
+path{
+  animation: dash 3s ease-in-out forwards;
+}
+.first {
+  stroke-dasharray: 797 797;
+  stroke-dashoffset: 797;
+}
+.second{
+  stroke-dasharray: 405.4 405.4;
+  stroke-dashoffset: 405.4;
+  animation-delay: 3s;
+}
+.third{
+  stroke-dasharray: 91.4 91.4;
+  stroke-dashoffset: 91.4;
+  animation: dash 2s ease-in-out forwards;
+  animation-delay: 6s;
+}
+.fourth{
+  stroke-dasharray: 97.1 97.1;
+  stroke-dashoffset: 97.1;
+  animation: dash 2s ease-in-out forwards;
+  animation-delay: 8s;
+}
+.fifth{
+  stroke-dasharray: 22.7 22.7;
+  stroke-dashoffset: 22.7;
+  animation: dash 1s ease-in-out forwards;
+  animation-delay: 9s;
+}
+.sixth{
+  stroke-dasharray: 47.3 47.3;
+  stroke-dashoffset: 47.3;
+  animation: dash 1s ease-in-out forwards;
+  animation-delay: 10s;
+}
+.seventh{
+  stroke-dasharray: 175.8 175.8;
+  stroke-dashoffset: 175.8;
+  animation-delay: 11s;
+}
+
+@keyframes dash {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
