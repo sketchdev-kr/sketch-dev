@@ -45,11 +45,6 @@ body {
   .thumbs {
     width: 90%;
   }
-  .quiz__image__data{
-    position: relative;
-    bottom: 8px;
-    right: 25px;
-  }
 }
 .quiz__image {
   background-color: whitesmoke;
