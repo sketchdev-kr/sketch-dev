@@ -26,18 +26,18 @@ path{
   stroke-dasharray: 22.7 22.7;
   stroke-dashoffset: 22.7;
   animation: dash 1s ease-in-out forwards;
-  animation-delay: 9s;
+  animation-delay: 10s;
 }
 .sixth{
   stroke-dasharray: 47.3 47.3;
   stroke-dashoffset: 47.3;
   animation: dash 1s ease-in-out forwards;
-  animation-delay: 10s;
+  animation-delay: 11s;
 }
 .seventh{
   stroke-dasharray: 175.8 175.8;
   stroke-dashoffset: 175.8;
-  animation-delay: 11s;
+  animation-delay: 12s;
 }
 
 @keyframes dash {
