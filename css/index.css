@@ -109,7 +109,6 @@ body {
 }
 @media screen and (max-width: 650px) {
   body {
-    height: 100vh;
     justify-content: flex-start;
   }
   .quiz {
@@ -117,15 +116,15 @@ body {
   }
   .score {
     width: 300px;
-    width: 90%;
+    border:2px solid black;
   }
   .quiz__form__answer {
-    width: 290px;
+    width: 270px;
   }
   .quiz__image__data{
-    height: 220px;
+    height: 200px;
   }
   .btn{
-    width: 280px;
+    width: 250px;
   }
 }
