@@ -81,6 +81,9 @@ body {
   padding: 5px 10px;
   margin: 15px 0px;
   border-bottom: 4px solid #566270;
+  font-weight: 700;
+  font-style: normal;
+  font-size: medium;
   text-align: center;
   transition: border-color 0.3s ease-in-out;
 }
@@ -93,7 +96,7 @@ body {
 }
 .quiz__form__answer:focus {
   outline: none;
-  border-color: #4f86c6;
+  border-color: #E53A40;
 }
 .btn {
   background-color: #efefef;
