@@ -43,17 +43,7 @@ body {
   justify-content: center;
   align-items: center;
 }
-@media screen and (max-width: 650px) {
-  body {
-    height: 100vh;
-  }
-  .quiz {
-    width: 90%;
-  }
-  .score {
-    width: 90%;
-  }
-}
+
 .quiz__image {
   display:flex;
   flex-direction: column;
@@ -78,7 +68,7 @@ body {
   border: none;
   width: 340px;
   height: 20px;
-  padding: 5px 10px;
+  padding: 5px 0px;
   margin: 15px 0px;
   border-bottom: 4px solid #566270;
   font-weight: 700;
@@ -116,4 +106,19 @@ body {
 }
 .btn:active {
   background-color: #dddfe6;
+}
+@media screen and (max-width: 650px) {
+  body {
+    height: 100vh;
+    justify-content: flex-start;
+  }
+  .quiz {
+    width: 90%;
+  }
+  .score {
+    width: 90%;
+  }
+  .quiz__image__data{
+    height: 300px;
+  }
 }
