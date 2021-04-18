@@ -112,19 +112,18 @@ body {
     justify-content: flex-start;
   }
   .quiz {
-    width: 300px;
+    width: 305px;
   }
   .score {
-    width: 300px;
-    border:2px solid black;
+    width: 305px;
   }
   .quiz__form__answer {
     width: 270px;
   }
   .quiz__image__data{
-    height: 200px;
+    height: 210px;
   }
   .btn{
-    width: 250px;
+    width: 230px;
   }
 }
