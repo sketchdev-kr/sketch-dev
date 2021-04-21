@@ -3,7 +3,7 @@ paper.setup("canvas");
 const canvasPaths = [];
 
 const tool = new paper.Tool();
-tool.minDistance = 10;
+tool.minDistance = 5;
 tool.activate();
 tool.onMouseDown = (event) => {
   // Create a new path every time the mouse is clicked
