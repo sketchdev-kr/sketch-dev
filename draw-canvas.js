@@ -30,7 +30,7 @@ form.addEventListener('submit', (e) => {
   xmlHttp.onreadystatechange = () => {
     console.log(xmlHttp.responseText);
   };
-  xmlHttp.open("post", "http://localhost:3000/internal/sketches");
+  xmlHttp.open("post", "http://sketch-dev-backend-dev.ap-northeast-2.elasticbeanstalk.com/internal/sketches");
   xmlHttp.setRequestHeader("Content-Type", "application/json");
   xmlHttp.send(JSON.stringify({
     word: word.value,
