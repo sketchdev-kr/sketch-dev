@@ -93,13 +93,13 @@
 
 
     </footer>
-    <!-- <script src="../index.js"></script> -->
     <script>
       const infoIcon = document.querySelector("#info-icon");
       const info = document.querySelector(".info");
       const handleMouse = () => info.classList.toggle("show");
       infoIcon.addEventListener("mouseover", handleMouse);
       infoIcon.addEventListener("mouseleave", handleMouse);
+      infoIcon.addEventListener("touchcancel", () => info.classList.remove("show"));
     </script>
   </body>
 </html>
