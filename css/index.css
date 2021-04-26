@@ -244,9 +244,7 @@ a{
   }
   footer{
    margin-top: 25px;
-  }
-  .license{
-    margin:2px;
+   width:95%;
   }
 }
 @media screen and (max-width: 320px) {
