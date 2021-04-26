@@ -1,129 +1,255 @@
 @import "reset.css";
 
 body {
-  width: 100vw;
+  width: 100%;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   font-family: source-han-sans-korean, -apple-system, BlinkMacSystemFont,
     "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
     sans-serif;
   background-image: url(../img/background.png);
   background-size: 256px;
 }
-.logo {
-  margin-top: 10px;
-  width: 150px;
-  padding: 10px;
+header {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 20px 0px;
 }
-.score {
+.logo {
+  height: 40px;
+  max-width: 337px;
+  width: 30%;
+  min-width: 240px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5px 0px;
+  background-color: #b3dec1;
+}
+.logo_img {
+  width: 150px;
+}
+main {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.quiz {
+  border-radius: 100px;
+  padding: 0px 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #477998;
+}
+.title {
+  width: 100%;
   font-weight: 700;
   font-style: normal;
-  font-size: large;
-  width: 550px;
-  text-align: right;
+  font-size: xx-large;
+  color: whitesmoke;
+  text-align: center;
+  padding: 15px 0px;
 }
+
 .thumbs {
   padding-top: 10px;
   padding-right: 15px;
-  width:100%;
+  width: 100%;
   text-align: right;
   font-size: x-large;
   box-sizing: border-box;
 }
-#thumbsUp,
-#thumbsDown{
-  padding-right: 5px;
-}
-.quiz {
-  width: 550px;
+.quiz__content {
+  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  overflow: hidden;
 }
-
-.quiz__image {
-  display:flex;
+.participation {
+  margin-top: 10px;
+  font-weight: 500;
+  font-style: normal;
+  font-size: medium;
+  color: whitesmoke;
+}
+.quiz__content__image {
+  position:relative;
+  max-height: 370;
+  display: flex;
   flex-direction: column;
   background-color: whitesmoke;
   display: flex;
   justify-content: center;
-  width: 100%;
-  margin-top: 10px;
   border: 6px solid gray;
+  box-sizing: border-box;
   border-radius: 30px;
   background-size: cover;
   box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
 }
-.quiz__form {
+.quiz__content__image__data {
+  width: 100%;
+}
+/* 시작버튼 */
+.start {
+  margin-top: 10px;
+  width: 60%;
+}
+.btn__start {
+  background-color: #dbf9f0ff;
+  cursor: pointer;
+  width: 100%;
+  cursor: pointer;
+  margin-bottom: 10px;
+  padding: 10px 0px;
+  border: none;
+  font-weight: 700;
+  font-style: normal;
+  font-size: medium;
+}
+
+/* 공유하기 */
+.share {
+  width: 100%;
+}
+.share__text {
+  font-weight: 500;
+  font-style: normal;
+  font-size: medium;
+  color: whitesmoke;
+  text-align: center;
+  
+}
+.share__method {
   display: flex;
+  justify-content: center;
+  width: 100%;
+  margin: 10px 0px;
+}
+.kakao {
+  width: 32px;
+  height: 32px;
+  margin-right: 25px;
+}
+.facebook {
+  background-color: whitesmoke;
+  margin-right: 25px;
+}
+footer {
+  width:100%;
+  display:flex;
+  justify-content: flex-end;
+  position:relative;
+}
+.license{
+  margin-right: 10px;
+  position: absolute;
+  bottom: -5px;
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.info__icon{
+  display:inline-block;
+  width: 100%;
+  text-align: center;
+}
+#info-icon {
+  margin-top: 10px;
+  font-size: large;
+  color: whitesmoke;
+  opacity: 70%;
+} 
+#info-icon:hover{
+  color: #E6E6E6;
+}
+.info{
+  align-items: flex-end;
+  width: 100px;
+  background-color: whitesmoke;
+  opacity: 70%;
+  border-radius: 10px;
+  padding: 10px 5px;
+  font-size: 6px;
+  visibility: hidden;
+  
+}
+a{
+  text-decoration: none;
+  color:tomato;
+}
+.info__data{
+  width: 100%;
+  display:flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
 }
-.quiz__form__answer {
-  background-color: transparent;
-  border: none;
-  width: 340px;
-  height: 20px;
-  padding: 5px 0px;
-  margin: 15px 0px;
-  border-bottom: 4px solid #566270;
-  font-weight: 700;
-  font-style: normal;
-  font-size: medium;
-  text-align: center;
-  transition: border-color 0.3s ease-in-out;
+.show{
+  visibility: visible;
+  
 }
-.quiz__form__answer::placeholder {
-  text-align: center;
-  color: rgba(0, 0, 0, 0.6);
-}
-.quiz__form__answer:focus::placeholder {
-  color: transparent;
-}
-.quiz__form__answer:focus {
-  outline: none;
-  border-color: #E53A40;
-}
-.btn {
-  background-color: #efefef;
-  cursor: pointer;
-  width: 250px;
-  padding: 10px 30px;
-  margin-bottom: 10px;
-  border: 2px solid gray;
-  border-radius: 10px;
-  font-weight: 700;
-  font-style: normal;
-  font-size: medium;
-  box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
-}
-.btn:focus {
-  outline: none;
-}
-.btn:active {
-  background-color: #dddfe6;
-}
+
+/* 모바일 반응형 */
 @media screen and (max-width: 650px) {
+  header{
+    padding: 10px 0px;
+  }
   body {
     justify-content: flex-start;
   }
+  .logo{
+    min-width: 200px;
+    padding:0px;
+  }
   .quiz {
-    width: 305px;
+    padding:0px;
+    width: 95%;
+    border-radius: 55px;
   }
-  .score {
-    width: 305px;
+  .title {
+    padding: 7px;
+    font-weight: 700;
+    font-style: normal;
+    font-size: x-large;
   }
-  .quiz__form__answer {
-    width: 270px;
+  .quiz__content {
+    width: 100%;
+    padding: 0px;
   }
-  .quiz__image__data{
-    height: 210px;
+  .quiz__content__image {
+    width:90%;
+    max-width: 380px;
+    height: 250px;
   }
-  .btn{
-    width: 230px;
+  .quiz__content__image__data {
+    height: 100%;
+  }
+  .btn__start{
+    padding: 5px 0px;
+  }
+  .shareicon{
+    width:25px;
+    height:25px;
+  }
+  footer{
+   margin-top: 25px;
+  }
+}
+@media screen and (max-width: 320px) {
+  .quiz__content__image {
+    height: 190px;
   }
 }

@@ -7,8 +7,7 @@
       name="viewport"
       content="width=device-width, user-scalable=no, initial-scale=1.0"
     />
-    <link rel="stylesheet" href="css/index.css" />
-    <link rel="stylesheet" href="css/canvas.css" />
+    <link rel="stylesheet" href="../css/index.css" />
     <script>
       (function (d) {
         var config = {
@@ -49,40 +48,58 @@
   <body>
     <header>
       <div class="logo">
-        <image class="logo_img" src="img/logo-transparent.png" />
+        <image class="logo_img" src="../img/logo-transparent.png" />
       </div>
-      <span class="score">현재 점수 : 0</span>
     </header>
     <main>
       <div class="quiz">
+        <h2 class="title">개발자 캐치마인드</h2>
         <div class="quiz__content">
-          <h2 class="title">개발자 캐치마인드</h2>
           <div class="quiz__content__image">
-            <div class="thumbs">
-              <i id="thumbsUp" class="far fa-thumbs-up"></i>
-              <i id="thumbsDown" class="far fa-thumbs-down"></i>
-            </div>
-            <canvas id="canvas" class="quiz__content__image__canvas"></canvas>
+            <object
+              class="quiz__content__image__data"
+              data="../img/quiz-image.svg"
+              type="image/svg+xml"
+            ></object>
           </div>
+          <span class="participation">지금까지 000명이 참여했어요!</span>
           <form class="start">
             <input value="시작하기" type="submit" class="btn__start" />
           </form>
           <div class="share">
             <h4 class="share__text">공유하기</h4>
             <div class="share__method">
-              <a href="#"><img class="kakao" src="img/kakaolink.png" /></a>
-              <a href="#"><img class="facebook" src="img/facebook.png" /></a>
-              <a href="#"><img class="link" src="img/link.png" /></a>
+              <a href="#"><img class="kakao shareicon" src="../img/kakaolink.png" /></a>
+              <a href="#"><img class="facebook shareicon" src="../img/facebook.png" /></a>
+              <a href="#"><img class="link shareicon" src="../img/link.png" /></a>
             </div>
           </div>
         </div>
       </div>
     </main>
+   
     <footer>
-      <!-- <div>Icons made by <a href="https://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div> -->
+      <div class="license">
+        <div class="info">
+          <span class="info__icon">Link Icon License</span>
+          <div class="info__data">
+            Icons made by
+            <a href="https://www.freepik.com" title="Freepik">Freepik</a> from
+            <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a>
+          </div>
+        </div>
+        <i class="fas fa-info-circle" id="info-icon"> </i>
+      </div>
+
+
     </footer>
-    <script src="index.js"></script>
+    <!-- <script src="../index.js"></script> -->
+    <script>
+      const infoIcon = document.querySelector("#info-icon");
+      const info = document.querySelector(".info");
+      const handleMouse = () => info.classList.toggle("show");
+      infoIcon.addEventListener("mouseover", handleMouse);
+      infoIcon.addEventListener("mouseleave", handleMouse);
+    </script>
   </body>
-  <script src="js/paper/paper-full.min.js"></script>
-  <script src="canvas.js"></script>
 </html>

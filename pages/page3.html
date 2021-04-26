@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, user-scalable=no, initial-scale=1.0"
+    />
+    <link rel="stylesheet" href="../css/index.css" />
+    <link rel="stylesheet" href="../css/page3.css" />
+    <script>
+      (function (d) {
+        var config = {
+            kitId: "mwt1qev",
+            scriptTimeout: 3000,
+            async: true,
+          },
+          h = d.documentElement,
+          t = setTimeout(function () {
+            h.className =
+              h.className.replace(/\bwf-loading\b/g, "") + " wf-inactive";
+          }, config.scriptTimeout),
+          tk = d.createElement("script"),
+          f = false,
+          s = d.getElementsByTagName("script")[0],
+          a;
+        h.className += " wf-loading";
+        tk.src = "https://use.typekit.net/" + config.kitId + ".js";
+        tk.async = true;
+        tk.onload = tk.onreadystatechange = function () {
+          a = this.readyState;
+          if (f || (a && a != "complete" && a != "loaded")) return;
+          f = true;
+          clearTimeout(t);
+          try {
+            Typekit.load(config);
+          } catch (e) {}
+        };
+        s.parentNode.insertBefore(tk, s);
+      })(document);
+    </script>
+    <script
+      src="https://kit.fontawesome.com/7752253787.js"
+      crossorigin="anonymous"
+    ></script>
+    <title>Sketch.Dev</title>
+  </head>
+  <body>
+    <header>
+      <div class="logo">
+        <image class="logo_img" src="../img/logo-transparent.png" />
+      </div>
+    </header>
+    <main>
+      <div class="quiz">
+        <div class="title">
+          <div class="title__timer">
+            <img class="title__timer__img"src="../img/clock.png" />
+            <span class="title__timer__left">29s</span>
+          </div>
+          <span class="title__score">맞춘문제: 0 / 10 </span>
+        </div>
+        <div class="quiz__content">
+          
+          <div class="quiz__content__image">
+            <div class="quiz__content__loading"></div>
+            <span class="quiz__content__number">Quiz.1</span>
+            <div class="thumbs">
+              <i id="thumbsUp" class="far fa-thumbs-up"></i>
+              <i id="thumbsDown" class="far fa-thumbs-down"></i>
+            </div>
+            <object
+              class="quiz__content__image__data"
+              data="../img/quiz-image static.svg"
+              type="image/svg+xml"
+            ></object>
+          </div>
+          <div class="quiz__form">
+            <form>
+              <input
+                class="quiz__form__answer"
+                type="text"
+                required
+                placeholder="답을 입력해주세요"
+              />
+              <button class="btn submit">제출</button>
+            </form>
+            <button class="btn pass">패스</button>
+          </div>
+
+        </div>
+      </div>
+    </main>
+   
+    <footer>
+      <div class="license">
+        <div class="info">
+          <span class="info__icon">Link Icon License</span>
+          <div class="info__data">
+            Icons made by
+            <a href="https://www.freepik.com" title="Freepik">Freepik</a> from
+            <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a>
+          </div>
+        </div>
+        <i class="fas fa-info-circle" id="info-icon"> </i>
+      </div>
+      
+
+    </footer>
+    <script src="../controlThumbs.js"></script>
+    <script>
+      const infoIcon = document.querySelector("#info-icon");
+      const info = document.querySelector(".info");
+      const handleMouse = () => info.classList.toggle("show");
+      infoIcon.addEventListener("mouseover", handleMouse);
+      infoIcon.addEventListener("mouseleave", handleMouse);
+    </script>
+  </body>
+</html>
