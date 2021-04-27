@@ -32,7 +32,7 @@ paper.setup("canvas");
     }
     draw(0);
   };
-  xmlHttp.open("get", "http://sketch-dev-backend-dev.ap-northeast-2.elasticbeanstalk.com/sketches/60824cd82d0851b300d5e1d8");
+  xmlHttp.open("get", "https://api.sketchdev.kr/sketches/60824cd82d0851b300d5e1d8");
   xmlHttp.setRequestHeader("Content-Type", "application/json");
   xmlHttp.send();
 })()
