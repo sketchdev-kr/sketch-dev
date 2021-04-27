@@ -1,6 +1,12 @@
 
 paper.setup("canvas");
 
+const originalWidth = 530;
+const canvasWidth = document.getElementById("canvas").clientWidth;
+const canvasRatio = canvasWidth / originalWidth
+console.log(canvasWidth, canvasRatio)
+
+
 function onLoad() {
   var xmlHttp = new XMLHttpRequest();
   xmlHttp.onreadystatechange = () => {
@@ -22,9 +28,9 @@ function onLoad() {
           path.strokeColor = 'black';
           path.strokeCap = 'round';
           path.strokeJoin = 'round';
-          path.add(new paper.Point(event.x, event.y));
+          path.add(new paper.Point(event.x * canvasRatio, event.y * canvasRatio));
         } else if (event.type === "drag") {
-          path.add(new paper.Point(event.x, event.y))
+          path.add(new paper.Point(event.x * canvasRatio, event.y * canvasRatio))
         }
         i+=1;
         draw(i);
