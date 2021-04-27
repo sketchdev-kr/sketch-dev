@@ -1,4 +1,3 @@
-
 paper.setup("canvas");
 const canvasPaths = [];
 
@@ -22,6 +21,19 @@ tool.onMouseDrag = (event) => {
   canvasPaths.push({ type: "drag", x: event.point.x, y: event.point.y });
 }
 
-function save() {
-  console.log(JSON.stringify(canvasPaths));
-}
+const word = document.querySelector(".quiz__form__answer");
+const form = document.querySelector(".quiz__form");
+form.addEventListener('submit', (e) => {
+  e.preventDefault();
+
+  var xmlHttp = new XMLHttpRequest();
+  xmlHttp.onreadystatechange = () => {
+    console.log(xmlHttp.responseText);
+  };
+  xmlHttp.open("post", "https://api.sketchdev.kr/internal/sketches");
+  xmlHttp.setRequestHeader("Content-Type", "application/json");
+  xmlHttp.send(JSON.stringify({
+    word: word.value,
+    drawPaths: canvasPaths,
+  }));
+});

@@ -29,6 +29,7 @@ header {
   align-items: center;
   padding: 5px 0px;
   background-color: #b3dec1;
+  box-shadow: 2px 2px 7px 2px gray;
 }
 .logo_img {
   width: 150px;
@@ -48,6 +49,7 @@ main {
   justify-content: space-between;
   align-items: center;
   background-color: #477998;
+  box-shadow: 1px 1px 7px 2px gray;
 }
 .title {
   width: 100%;
@@ -116,6 +118,10 @@ main {
   font-weight: 700;
   font-style: normal;
   font-size: medium;
+  transition-duration: 0.4s;
+}
+.btn__start:hover {
+  background-color: #f8f5f1;
 }
 
 /* 공유하기 */
