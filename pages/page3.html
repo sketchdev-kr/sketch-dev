@@ -70,11 +70,7 @@
               <i id="thumbsUp" class="far fa-thumbs-up"></i>
               <i id="thumbsDown" class="far fa-thumbs-down"></i>
             </div>
-            <object
-              class="quiz__content__image__data"
-              data="../img/quiz-image static.svg"
-              type="image/svg+xml"
-            ></object>
+            <canvas id="canvas" class="quiz__content__image__canvas"></canvas>
           </div>
           <div class="quiz__form">
             <form>
@@ -115,5 +111,7 @@
       const handleMouse = () => info.classList.toggle("show");
       infoIcon.addEventListener("click", handleMouse);
     </script>
+    <script src="../js/paper/paper-full.min.js"></script>
+    <script src="../js/page3.js"></script>
   </body>
 </html>
