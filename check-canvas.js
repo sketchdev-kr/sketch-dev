@@ -46,11 +46,16 @@ function onLoad() {
     }
     draw(0);
   };
-  xmlHttp.open("get", "http://api.sketchdev.kr/sketches/60824cd82d0851b300d5e1d8");
+  const urlParams = new URLSearchParams(window.location.search);
+  const id = urlParams.get('id');
+  if (!id) {
+    return;
+  }
+  xmlHttp.open("get", `http://api.sketchdev.kr/sketches/${id}`);
   xmlHttp.setRequestHeader("Content-Type", "application/json");
   xmlHttp.send();
 }
 
 (function() {
-  setTimeout(onLoad, 3000);
+  onLoad();
 })()

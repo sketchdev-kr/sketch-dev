@@ -1,5 +1,9 @@
 paper.setup("canvas");
+paper.fillColor = '#FFF'
 const canvasPaths = [];
+
+let currentColor = '#000';
+let currentWidth = 5;
 
 const tool = new paper.Tool();
 tool.minDistance = 5;
@@ -7,9 +11,9 @@ tool.activate();
 tool.onMouseDown = (event) => {
   // Create a new path every time the mouse is clicked
   path = new paper.Path();
+  path.strokeWidth = currentWidth;
+  path.strokeColor = currentColor;
   path.add(event.point);
-  path.strokeWidth = 5;
-  path.strokeColor = 'black';
   
   canvasPaths.push({ type: "down", x: event.point.x, y: event.point.y });
 }
@@ -28,7 +32,10 @@ form.addEventListener('submit', (e) => {
 
   var xmlHttp = new XMLHttpRequest();
   xmlHttp.onreadystatechange = () => {
+    if (xmlHttp.readyState !== XMLHttpRequest.DONE) return;
+
     console.log(xmlHttp.responseText);
+    alert("성공! " + xmlHttp.responseText);
   };
   xmlHttp.open("post", "https://api.sketchdev.kr/internal/sketches");
   xmlHttp.setRequestHeader("Content-Type", "application/json");
@@ -37,3 +44,16 @@ form.addEventListener('submit', (e) => {
     drawPaths: canvasPaths,
   }));
 });
+
+
+function pickColor(color) {
+  document.querySelector(".colorPreview").style.backgroundColor = color
+  currentColor = color;
+  currentWidth = color == '#FFF' ? 30 : 5;
+  canvasPaths.push({ type: "colorPick", color: currentColor });
+  canvasPaths.push({ type: "widthPick", width: currentWidth });
+}
+
+function save() {
+  console.log(JSON.stringify(canvasPaths));
+}
