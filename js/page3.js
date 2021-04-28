@@ -15,6 +15,9 @@ function onLoad() {
     const res = JSON.parse(xmlHttp.responseText);
     const canvasPaths = res.drawPaths;
   
+    let currentColor = '#000';
+    let currentWidth = 5;
+
     const draw = (i) => {
       setTimeout(() => {
         if (i === canvasPaths.length) {
@@ -24,13 +27,18 @@ function onLoad() {
         const event = canvasPaths[i];
         if (event.type === "down") {
           path = new paper.Path();
-          path.strokeWidth = 5;
-          path.strokeColor = 'black';
+          path.strokeWidth = currentWidth;
+          path.strokeColor = currentColor;
           path.strokeCap = 'round';
           path.strokeJoin = 'round';
           path.add(new paper.Point(event.x * canvasRatio, event.y * canvasRatio));
         } else if (event.type === "drag") {
           path.add(new paper.Point(event.x * canvasRatio, event.y * canvasRatio))
+        } else if (event.type === "colorPick") {
+          currentColor = event.color;
+          console.log(currentColor);
+        } else if (event.type === "widthPick") {
+          currentWidth = event.width;
         }
         i+=1;
         draw(i);
