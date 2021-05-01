@@ -1,10 +1,10 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./check-canvas.css";
 import paper from "paper";
 import axios from "axios";
 
 export default function CheckCanvas(props) {
-    window.onload = async () => {
+    useEffect(async () => {
       paper.setup("canvas");
 
       const originalWidth = 530;
@@ -51,7 +51,7 @@ export default function CheckCanvas(props) {
         }, Math.random() * 40);
       }
       draw(0);
-    }
+    }, []);
 
     return (
         <main>

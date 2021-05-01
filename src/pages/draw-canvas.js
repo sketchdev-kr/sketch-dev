@@ -11,9 +11,9 @@ export default function DrawCanvas(props) {
     const [ word, setWord ] = useState("");
     const [ currentColor, setColor ] = useState("#000");
 
-    window.onload = () => {
+    useEffect(() => {
         paper.setup("canvas");
-    }
+    }, []);
 
     let path;
     useEffect(() => {
