@@ -27,4 +27,8 @@ header {
     min-width: 200px;
     padding:0px;
   }
+
+  header{
+    padding: 10px 0px;
+  }
 }

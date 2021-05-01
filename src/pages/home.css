@@ -111,3 +111,50 @@ main {
   background-color: whitesmoke;
   margin-right: 25px;
 }
+
+
+/* 모바일 반응형 */
+@media screen and (max-width: 650px) {
+  body {
+    justify-content: flex-start;
+  }
+  .quiz {
+    padding:0px;
+    width: 95%;
+    border-radius: 55px;
+  }
+  .title {
+    padding: 7px;
+    font-weight: 700;
+    font-style: normal;
+    font-size: x-large;
+  }
+  .quiz__content {
+    width: 100%;
+    padding: 0px;
+  }
+  .quiz__content__image {
+    width:90%;
+    max-width: 380px;
+    height: 250px;
+  }
+  .quiz__content__image__data {
+    height: 100%;
+  }
+  .btn__start{
+    padding: 5px 0px;
+  }
+  .shareicon{
+    width:25px;
+    height:25px;
+  }
+  footer{
+   margin-top: 25px;
+   width:95%;
+  }
+}
+@media screen and (max-width: 320px) {
+  .quiz__content__image {
+    height: 190px;
+  }
+}

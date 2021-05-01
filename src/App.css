@@ -11,3 +11,12 @@ body {
   background-image: url(./img/background.png);
   background-size: 256px;
 }
+
+
+@media screen and (max-width: 650px) {
+  .title{
+      padding: 7px 25px;
+      width: 90%;
+      font-size: large;
+  }
+}
