@@ -1,0 +1,1 @@
+aws s3 sync --region ap-northeast-2 ./ s3://sketchdev.kr
