@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Footer from "../components/footer";
 import "./home.css";
 import "./svg.css";
 import kakao from "../img/kakaolink.png";
@@ -50,6 +51,7 @@ export default class Home extends Component {
           </div>
         </div>
       </div>
+      <Footer />
     </main>)
     }
 }
