@@ -1,0 +1,30 @@
+.logo {
+  height: 40px;
+  max-width: 337px;
+  width: 30vw;
+  min-width: 240px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5px 0px;
+  background-color: #b3dec1;
+  box-shadow: 2px 2px 7px 2px gray;
+}
+
+.logo_img {
+  width: 150px;
+}
+
+header {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 20px 0px;
+}
+
+@media screen and (max-width: 650px) {
+  .logo{
+    min-width: 200px;
+    padding:0px;
+  }
+}
