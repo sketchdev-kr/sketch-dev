@@ -6,7 +6,8 @@ import paper from 'paper';
 import { motion } from 'framer-motion';
 
 export default function Quiz(props) {
-  const [seconds, setSeconds] = useState(32);
+  const [quizNumber, setQuizNumber] = useState(1);
+  const [seconds, setSeconds] = useState(27);
   let mounted = false;
   if (seconds > 0) {
     setTimeout(() => {
@@ -15,8 +16,10 @@ export default function Quiz(props) {
     }, 1000);
   }
 
-  useEffect(() => {
+  useEffect(async () => {
     mounted = true;
+    const quizesRes = await axios.get("http://api.sketchdev.kr/sketches/random");
+    const quizes = quizesRes.data.ids;
     setTimeout(async () => {
       if (!mounted) {
         return;
@@ -27,7 +30,7 @@ export default function Quiz(props) {
       const canvasWidth = document.getElementById("canvas").clientWidth;
       const canvasRatio = canvasWidth / originalWidth
   
-      const res = await axios.get("http://api.sketchdev.kr/sketches/60824cd82d0851b300d5e1d8");
+      const res = await axios.get(`http://api.sketchdev.kr/sketches/${quizes[quizNumber-1]}`);
       const canvasPaths = res.data.drawPaths;
     
       let path;
@@ -35,8 +38,11 @@ export default function Quiz(props) {
       let currentWidth = 5;
   
       const draw = (i) => {
+        if (!mounted) {
+          return;
+        }
         setTimeout(() => {
-          if (i === canvasPaths.length) {
+          if (!mounted || i === canvasPaths.length) {
             return;
           }
       
@@ -93,7 +99,7 @@ export default function Quiz(props) {
           
           <div className="quiz__content__image">
             <div className="quiz__content__loading"></div>
-            <span className="quiz__content__number">Quiz.1</span>
+            <span className="quiz__content__number">Quiz.{quizNumber}</span>
             <div className="thumbs">
               <i id="thumbsUp" className="far fa-thumbs-up"></i>
               <i id="thumbsDown" className="far fa-thumbs-down"></i>
