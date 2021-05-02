@@ -34,11 +34,11 @@
     width: 110%;
     height: 110%;
     background-color: black;
-    opacity: 50%;
+    opacity: 0%;
     transition: opacity 0.25s;
   }
-  .quiz__content__loading__onquiz{
-    opacity: 0%;
+  .quiz__content__loading.quiz__content__loading__onshow{
+    opacity: 50%;
   }
 
   .quiz__content__text{
@@ -56,7 +56,7 @@
     transition: margin-top 0.25s;
   }
   
-  .quiz__content__text__onshow{
+  .quiz__content__text.quiz__content__text__onshow{
     margin-top: 0%;
   }
 .quiz__form {

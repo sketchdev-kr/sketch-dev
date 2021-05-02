@@ -5,49 +5,78 @@ import axios from 'axios';
 import paper from 'paper';
 import { motion } from 'framer-motion';
 
+const TOTAL_QUIZ = 10;
+const TIMER = 27;
+
 export default function Quiz(props) {
-  const [quizState, setQuizState] = useState(false);
-  const [quizNumber, setQuizNumber] = useState(1);
-  const [seconds, setSeconds] = useState(27);
-  let mounted = false;
+  const [quizLoadingShow, setQuizLodingShow] = useState(true);
+  const [textShow, setTextShow] = useState(true);
+  const [quizes, setQuizes] = useState([]);
+  const [quizNumber, setQuizNumber] = useState(0);
+  const [seconds, setSeconds] = useState(0);
+  const [text, setText] = useState("");
+  const [answer, setAnswer] = useState("");
+  const [mounted, setMounted] = useState(false);
+  const [answerCount, setAnswerCount] = useState(0);
+
   if (seconds > 0) {
     setTimeout(() => {
       const secs = seconds - 1;
       setSeconds(secs);
       if (secs === 0) {
-        setQuizState(false);
+        setQuizLodingShow(true);
+        setText("아쉽습니다. 정답은: " + answer);
+        setTimeout(() => {
+          if (quizNumber === TOTAL_QUIZ) {
+            return;
+          }
+          setSeconds(TIMER);
+          setQuizNumber(quizNumber+1);
+        }, 3250);
       }
     }, 1000);
   }
 
+  // on initial mount
   useEffect(async () => {
-    mounted = true;
+    setMounted(true);
     const quizesRes = await axios.get("http://api.sketchdev.kr/sketches/random");
-    const quizes = quizesRes.data.ids;
+    setQuizes(quizesRes.data.ids);
+    setSeconds(TIMER);
+    setQuizNumber(quizNumber + 1);
+
+    return () => {
+      setMounted(false);
+    }
+  }, [])
+
+  // on quiz number updated
+  useEffect(async () => {
+    if (quizNumber === 0) { return; }
+    setText("Quiz. " + quizNumber);
     setTimeout(async () => {
-      setQuizState(true);
-      if (!mounted || seconds === 0) {
+      paper.setup("canvas");
+      setQuizLodingShow(false);
+      if (seconds === 0) {
         return;
       }
-      paper.setup("canvas");
+
 
       const originalWidth = 530;
       const canvasWidth = document.getElementById("canvas").clientWidth;
       const canvasRatio = canvasWidth / originalWidth
   
       const res = await axios.get(`http://api.sketchdev.kr/sketches/${quizes[quizNumber-1]}`);
+      setAnswer(res.data.word);
       const canvasPaths = res.data.drawPaths;
     
       let path;
       let currentColor = '#000';
       let currentWidth = 5;
-  
       const draw = (i) => {
-        if (!mounted) {
-          return;
-        }
+        console.log(seconds);
         setTimeout(() => {
-          if (!mounted || i === canvasPaths.length) {
+          if (i === canvasPaths.length) {
             return;
           }
       
@@ -63,7 +92,6 @@ export default function Quiz(props) {
             path.add(new paper.Point(event.x * canvasRatio, event.y * canvasRatio))
           } else if (event.type === "colorPick") {
             currentColor = event.color;
-            console.log(currentColor);
           } else if (event.type === "widthPick") {
             currentWidth = event.width;
           }
@@ -75,10 +103,17 @@ export default function Quiz(props) {
 
       return () => {
         paper.view.remove();
-        mounted = false;
       }
     }, 3000);
-  }, []);
+  }, [quizNumber]);
+
+  // on quiz text updated
+  useEffect(async() => {
+    setTextShow(true);
+    setTimeout(() => {
+      setTextShow(false);
+    }, 2750);
+  }, [text]);
 
   return (<motion.div initial="exit" animate="enter" exit="exit" variants={{
     enter: {
@@ -98,13 +133,13 @@ export default function Quiz(props) {
             <img className="title__timer__img"src={clockImage} />
             <span className="title__timer__left">{seconds}s</span>
           </div>
-          <span className="title__score">맞춘문제: 0 / 10 </span>
+          <span className="title__score">맞춘문제: {answerCount} / {TOTAL_QUIZ} </span>
         </div>
         <div className="quiz__content">
           
           <div className="quiz__content__image">
-            <div className={['quiz__content__loading', quizState ? "quiz__content__loading__onquiz" : ""].join(' ')}></div>
-            <span className={['quiz__content__text', quizState ? "" : "quiz__content__text__onshow"].join(' ')}>Quiz. {quizNumber}</span>
+            <div className={['quiz__content__loading', quizLoadingShow ? "quiz__content__loading__onshow" : ""].join(' ')}></div>
+            <span className={['quiz__content__text', textShow ? "quiz__content__text__onshow" : ""].join(' ')}>{text}</span>
             <div className="thumbs">
               <i id="thumbsUp" className="far fa-thumbs-up"></i>
               <i id="thumbsDown" className="far fa-thumbs-down"></i>
@@ -112,7 +147,11 @@ export default function Quiz(props) {
             <canvas id="canvas" className="quiz__content__image__canvas"></canvas>
           </div>
           <div className="quiz__form">
-            <form>
+            <form onSubmit={async (e) => {
+              e.preventDefault();
+              const userAnswer = e.target[0].value;
+              console.log(userAnswer);
+            }}>
               <input
                 className="quiz__form__answer"
                 type="text"
