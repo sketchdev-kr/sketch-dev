@@ -6,6 +6,7 @@ import paper from 'paper';
 import { motion } from 'framer-motion';
 
 export default function Quiz(props) {
+  const [quizState, setQuizState] = useState(false);
   const [quizNumber, setQuizNumber] = useState(1);
   const [seconds, setSeconds] = useState(27);
   let mounted = false;
@@ -13,6 +14,9 @@ export default function Quiz(props) {
     setTimeout(() => {
       const secs = seconds - 1;
       setSeconds(secs);
+      if (secs === 0) {
+        setQuizState(false);
+      }
     }, 1000);
   }
 
@@ -21,7 +25,8 @@ export default function Quiz(props) {
     const quizesRes = await axios.get("http://api.sketchdev.kr/sketches/random");
     const quizes = quizesRes.data.ids;
     setTimeout(async () => {
-      if (!mounted) {
+      setQuizState(true);
+      if (!mounted || seconds === 0) {
         return;
       }
       paper.setup("canvas");
@@ -98,8 +103,8 @@ export default function Quiz(props) {
         <div className="quiz__content">
           
           <div className="quiz__content__image">
-            <div className="quiz__content__loading"></div>
-            <span className="quiz__content__number">Quiz.{quizNumber}</span>
+            <div className={['quiz__content__loading', quizState ? "quiz__content__loading__onquiz" : ""].join(' ')}></div>
+            <span className={['quiz__content__text', quizState ? "" : "quiz__content__text__onshow"].join(' ')}>Quiz. {quizNumber}</span>
             <div className="thumbs">
               <i id="thumbsUp" className="far fa-thumbs-up"></i>
               <i id="thumbsDown" className="far fa-thumbs-down"></i>

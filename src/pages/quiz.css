@@ -35,9 +35,13 @@
     height: 110%;
     background-color: black;
     opacity: 50%;
-    animation: 0.25s fadeout 2.5s forwards;
+    transition: opacity 0.25s;
   }
-  .quiz__content__number{
+  .quiz__content__loading__onquiz{
+    opacity: 0%;
+  }
+
+  .quiz__content__text{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -48,9 +52,12 @@
     opacity: 100%;
     font-weight: 700;
     font-size:xx-large;
-    animation-duration: 3s;
-    animation-name: slidein;
-    animation-fill-mode: forwards;
+    margin-top: -100%;
+    transition: margin-top 0.25s;
+  }
+  
+  .quiz__content__text__onshow{
+    margin-top: 0%;
   }
 .quiz__form {
     width:100%;
@@ -72,6 +79,7 @@
     width: 100%;
     padding: 5px 0px;
     margin: 15px 0px;
+    color: rgba(245, 245, 245, 0.9);
     border-bottom: 2px solid whitesmoke;
     font-weight: 700;
     font-style: normal;
@@ -146,19 +154,3 @@
         margin-top: 5px;
     }
   }
-
-@keyframes slidein {
-  from {
-    margin-top: -100%;
-  }
-  50% {
-    margin-top: 0%;
-  }
-  to {
-    margin-top: -100%;
-  }
-}
-@keyframes fadeout {
-  from {opacity: 50%}
-  to {opacity: 0%}
-}
