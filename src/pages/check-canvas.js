@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import "./check-canvas.css";
+import queryString from 'query-string';
 import paper from "paper";
 import axios from "axios";
 
@@ -11,8 +12,9 @@ export default function CheckCanvas(props) {
       const canvasWidth = document.getElementById("canvas").clientWidth;
       const canvasRatio = canvasWidth / originalWidth
 
-      const urlParams = new URLSearchParams(window.location.search);
-      const id = urlParams.get('id');
+      
+      const query = queryString.parse(props.location.search);
+      const id = query.id;
       if (!id) {
         return;
       }

@@ -3,9 +3,11 @@ import "./quiz.css";
 import clockImage from "../img/clock.png";
 import axios from 'axios';
 import paper from 'paper';
+import { motion } from 'framer-motion';
 
 export default function Quiz(props) {
   const [seconds, setSeconds] = useState(32);
+  let mounted = false;
   if (seconds > 0) {
     setTimeout(() => {
       const secs = seconds - 1;
@@ -14,7 +16,11 @@ export default function Quiz(props) {
   }
 
   useEffect(() => {
+    mounted = true;
     setTimeout(async () => {
+      if (!mounted) {
+        return;
+      }
       paper.setup("canvas");
 
       const originalWidth = 530;
@@ -55,10 +61,25 @@ export default function Quiz(props) {
         }, Math.random() * 40);
       }
       draw(0);
+
+      return () => {
+        paper.view.remove();
+        mounted = false;
+      }
     }, 3000);
   }, []);
 
-  return (<>
+  return (<motion.div initial="exit" animate="enter" exit="exit" variants={{
+    enter: {
+      opacity: 1,
+      transition: { duration: 0.2, ease: "easeInOut", },
+    },
+    center: { opacity: 1, x: 0 },
+    exit: {
+      opacity: 0,
+      transition: { duration: 0.2, ease: "easeInOut", },
+    },
+  }}>
     <main>
       <div className="quiz">
         <div className="title">
@@ -94,5 +115,5 @@ export default function Quiz(props) {
         </div>
       </div>
     </main>
-  </>)
+  </motion.div>)
 }

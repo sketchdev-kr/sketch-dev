@@ -1,10 +1,12 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import Footer from "../components/footer";
 import "./home.css";
 import "./svg.css";
 import kakao from "../img/kakaolink.png";
 import facebook from "../img/facebook.png"
 import link from "../img/link.png";
+import { motion } from "framer-motion";
 
 function QuizImage(props) {
   return (
@@ -27,27 +29,29 @@ export default function Home(props) {
     const count = "000";
 
     return (
-      <main>
-        <div className="quiz">
-          <h2 className="title">개발자 캐치마인드</h2>
-          <div className="quiz__content">
-            <div className="quiz__content__image">
-              <QuizImage />
-            </div>
-            <span className="participation">지금까지 {count}명이 참여했어요!</span>
-            <form className="start">
-              <input value="시작하기" type="button" className="btn__start" />
-            </form>
-            <div className="share">
-              <h4 className="share__text">공유하기</h4>
-              <div className="share__method">
-                <a href="#"><img className="kakao shareicon" src={kakao} /></a>
-                <a href="#"><img className="facebook shareicon" src={facebook} /></a>
-                <a href="#"><img className="link shareicon" src={link} /></a>
+      <motion.div initial="inital" animate="enter" exit="exit" variants={{ exit: { transition: { staggerChildren: 0.1 }}}}>
+        <main>
+          <div className="quiz">
+            <h2 className="title">개발자 캐치마인드</h2>
+            <div className="quiz__content">
+              <div className="quiz__content__image">
+                <QuizImage />
+              </div>
+              <span className="participation">지금까지 {count}명이 참여했어요!</span>
+              <Link to="/quiz" className="start">
+                <input value="시작하기" type="button" className="btn__start" />
+              </Link>
+              <div className="share">
+                <h4 className="share__text">공유하기</h4>
+                <div className="share__method">
+                  <a href="#"><img className="kakao shareicon" src={kakao} /></a>
+                  <a href="#"><img className="facebook shareicon" src={facebook} /></a>
+                  <a href="#"><img className="link shareicon" src={link} /></a>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-        <Footer />
-      </main>)
+          <Footer />
+        </main>
+      </motion.div>)
 }

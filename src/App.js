@@ -1,3 +1,4 @@
+import { AnimatePresence } from 'framer-motion';
 import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
 import './App.css';
 import Header from './components/header';
@@ -11,13 +12,20 @@ function App() {
     <div className="App">
       <Header />
       <BrowserRouter>
-        <Switch>
-          <Route path="/" exact component={Home} />
-          <Route path="/draw-canvas" component={DrawCanvas} />
-          <Route path="/check-canvas" component={CheckCanvas} />
-          <Route path="/quiz" component={Quiz}/>
-          <Redirect path="/*" to="/"/>
-        </Switch>
+          <Route
+            render={({location}) => (
+              <AnimatePresence exitBeforeEnter initial={false}>
+                <Switch location={location} key={location.pathname}>
+                  <Route path="/" exact component={Home} />
+                  <Route path="/draw-canvas" component={DrawCanvas} />
+                  <Route path="/check-canvas" component={CheckCanvas} />
+                  <Route path="/quiz" component={Quiz}/>
+                  <Redirect path="/*" to="/"/>
+                </Switch>
+              </AnimatePresence>
+            )}
+          >
+          </Route>
       </BrowserRouter>
     </div>
   );

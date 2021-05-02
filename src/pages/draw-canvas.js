@@ -36,7 +36,7 @@ export default function DrawCanvas(props) {
             path.add(event.point);
             canvasPaths.push({ type: "drag", x: event.point.x, y: event.point.y });
         }
-    });
+    }, [currentColor]);
     
     const pickColor = (color) => {
         setColor(color);
