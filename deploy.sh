@@ -1,1 +1,1 @@
-aws s3 sync --region ap-northeast-2 ./ s3://sketchdev.kr
+aws s3 sync --region ap-northeast-2 ./build s3://sketchdev.kr
