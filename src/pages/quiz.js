@@ -13,7 +13,7 @@ export default function Quiz(props) {
   const [textShow, setTextShow] = useState(true);
   const [quizes, setQuizes] = useState([]);
   const [quizNumber, setQuizNumber] = useState(0);
-  const [seconds, setSeconds] = useState(0);
+  const [seconds, setSeconds] = useState(TIMER);
   const [text, setText] = useState("");
   const [answer, setAnswer] = useState("");
   const [mounted, setMounted] = useState(false);
@@ -22,11 +22,30 @@ export default function Quiz(props) {
 
   const stopDraw = useRef(false);
 
-  if (seconds > 0) {
-    setTimeout(() => {
-      const secs = seconds - 1;
-      setSeconds(secs);
-      if (secs === 0) {
+  // on initial mount
+  useEffect(async () => {
+    setMounted(true);
+    const quizesRes = await axios.get("https://api.sketchdev.kr/sketches/random");
+    setQuizes(quizesRes.data.ids);
+    setQuizNumber(quizNumber + 1);
+
+    return () => {
+      stopDraw.current = true;
+      setMounted(false);
+    }
+  }, []);
+
+
+
+  // timer
+  useEffect(() => {
+    const countDown = setInterval(() => {
+      if (seconds > 0) {
+        setSeconds(seconds-1);
+      }
+
+      if (seconds === 0) {
+        clearInterval(countDown);
         stopDraw.current = true;
         setQuizLodingShow(true);
         setText("아쉽습니다. 정답은: " + answer);
@@ -40,22 +59,8 @@ export default function Quiz(props) {
         }, 3250);
       }
     }, 1000);
-  }
-
-  // on initial mount
-  useEffect(async () => {
-    setMounted(true);
-    const quizesRes = await axios.get("https://api.sketchdev.kr/sketches/random");
-    setQuizes(quizesRes.data.ids);
-    setSeconds(TIMER);
-    setQuizNumber(quizNumber + 1);
-
-    return () => {
-      stopDraw.current = true;
-      setMounted(false);
-    }
-  }, []);
-
+    return () => clearInterval(countDown);
+  }, [seconds]);
 
 
   // on quiz number updated
@@ -157,9 +162,22 @@ export default function Quiz(props) {
             <form onSubmit={async (e) => {
               e.preventDefault();
               const userAnswer = e.target[0].value;
-              console.log(userAnswer);
               if (userAnswer === answer) {
                 stopDraw.current = true;
+                setSeconds(-1);
+                setAnswerCount(answerCount + 1);
+
+                stopDraw.current = true;
+                setQuizLodingShow(true);
+                setText(answer + ", 정답입니다!");
+                setTimeout(() => {
+                  if (quizNumber === TOTAL_QUIZ) {
+                    return;
+                  }
+                  setSeconds(TIMER);
+                  stopDraw.current = false;
+                  setQuizNumber(quizNumber+1);
+                }, 3250);
               }
             }}>
               <input
@@ -170,7 +188,9 @@ export default function Quiz(props) {
               />
               <button className="btn submit">제출</button>
             </form>
-            <button className="btn pass">패스</button>
+            <button className="btn pass" onClick={(e) => {
+              setSeconds(0);
+            }}>패스</button>
           </div>
         </div>
       </div>
