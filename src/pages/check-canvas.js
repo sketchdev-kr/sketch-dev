@@ -19,7 +19,7 @@ export default function CheckCanvas(props) {
         return;
       }
 
-      const res = await axios.get(`http://api.sketchdev.kr/sketches/${id}`);
+      const res = await axios.get(`https://api.sketchdev.kr/sketches/${id}`);
       const canvasPaths = res.data.drawPaths;
 
       let path;

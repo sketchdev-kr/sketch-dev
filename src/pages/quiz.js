@@ -40,7 +40,7 @@ export default function Quiz(props) {
   // on initial mount
   useEffect(async () => {
     setMounted(true);
-    const quizesRes = await axios.get("http://api.sketchdev.kr/sketches/random");
+    const quizesRes = await axios.get("https://api.sketchdev.kr/sketches/random");
     setQuizes(quizesRes.data.ids);
     setSeconds(TIMER);
     setQuizNumber(quizNumber + 1);
@@ -66,7 +66,7 @@ export default function Quiz(props) {
       const canvasWidth = document.getElementById("canvas").clientWidth;
       const canvasRatio = canvasWidth / originalWidth
   
-      const res = await axios.get(`http://api.sketchdev.kr/sketches/${quizes[quizNumber-1]}`);
+      const res = await axios.get(`https://api.sketchdev.kr/sketches/${quizes[quizNumber-1]}`);
       setAnswer(res.data.word);
       const canvasPaths = res.data.drawPaths;
     

@@ -51,7 +51,7 @@ function onLoad() {
   if (!id) {
     return;
   }
-  xmlHttp.open("get", `http://api.sketchdev.kr/sketches/${id}`);
+  xmlHttp.open("get", `https://api.sketchdev.kr/sketches/${id}`);
   xmlHttp.setRequestHeader("Content-Type", "application/json");
   xmlHttp.send();
 }
