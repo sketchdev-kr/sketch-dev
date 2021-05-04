@@ -6,6 +6,7 @@ import CheckCanvas from './pages/check-canvas';
 import DrawCanvas from './pages/draw-canvas';
 import Home from './pages/home';
 import Quiz from './pages/quiz';
+import Result from './pages/result';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
                   <Route path="/draw-canvas" component={DrawCanvas} />
                   <Route path="/check-canvas" component={CheckCanvas} />
                   <Route path="/quiz" component={Quiz}/>
+                  <Route path="/result" component={Result}/>
                   <Redirect path="/*" to="/"/>
                 </Switch>
               </AnimatePresence>

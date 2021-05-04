@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import "./check-canvas.css";
 import queryString from 'query-string';
 import paper from "paper";
 import axios from "axios";

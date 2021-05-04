@@ -1,4 +1,5 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState, useRef, } from 'react';
+import { useHistory } from 'react-router-dom';
 import "./quiz.css";
 import clockImage from "../img/clock.png";
 import axios from 'axios';
@@ -127,6 +128,7 @@ export default function Quiz(props) {
     }, 2750);
   }, [text]);
 
+  const history = useHistory();
   return (<motion.div initial="exit" animate="enter" exit="exit" variants={{
     enter: {
       opacity: 1,
@@ -172,6 +174,7 @@ export default function Quiz(props) {
                 setText(answer + ", 정답입니다!");
                 setTimeout(() => {
                   if (quizNumber === TOTAL_QUIZ) {
+                    history.push('/result');
                     return;
                   }
                   setSeconds(TIMER);

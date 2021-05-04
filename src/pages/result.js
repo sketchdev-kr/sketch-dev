@@ -1,8 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Footer from "../components/footer";
-import "./home.css";
-import "./svg.css";
 import kakao from "../img/kakaolink.png";
 import facebook from "../img/facebook.png"
 import link from "../img/link.png";
@@ -25,21 +23,19 @@ function QuizImage(props) {
   )
 };
 
-export default function Home(props) {
-    const count = "000";
-
+export default function Result(props) {
     return (
-      <motion.div initial="inital" animate="enter" exit="exit" variants={{ exit: { transition: { staggerChildren: 0.1 }}}}>
+      <motion.div initial="exit" animate="enter" exit="exit" variants={{ exit: { transition: { staggerChildren: 0.1 }}}}>
         <main>
           <div className="quiz">
-            <h2 className="home-title">개발자 캐치마인드</h2>
+            <h2 className="title">결과</h2>
+            <span className="participation">맞춘 문제</span>
             <div className="quiz__content">
-              <div className="quiz__content__image">
-                <QuizImage />
+              <div className="quiz__content__image" style={{width: 530, height: 350}}>
+                <span> 뭔가 드립치고 싶은데 </span>
               </div>
-              <span className="participation">지금까지 {count}명이 참여했어요!</span>
               <Link to="/quiz" className="start">
-                <input value="시작하기" type="button" className="btn__start" />
+                <input value="다시하기" type="button" className="btn__start" />
               </Link>
               <div className="share">
                 <h4 className="share__text">공유하기</h4>

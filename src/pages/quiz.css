@@ -1,12 +1,13 @@
 .title{
     width: 100%;
     display:flex;
+    font-weight: 700;
     justify-content: space-between;
     font-size: large;
     align-items: center;
     padding: 7px 25px;
     padding-top: 15px;
-    
+    color: whitesmoke;
     box-sizing:border-box;
 }
 .title__timer{
