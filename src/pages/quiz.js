@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import "./quiz.css";
 import clockImage from "../img/clock.png";
 import axios from 'axios';
@@ -18,12 +18,16 @@ export default function Quiz(props) {
   const [answer, setAnswer] = useState("");
   const [mounted, setMounted] = useState(false);
   const [answerCount, setAnswerCount] = useState(0);
+  // const [stopDraw, setStopDraw] = useState(false);
+
+  const stopDraw = useRef(false);
 
   if (seconds > 0) {
     setTimeout(() => {
       const secs = seconds - 1;
       setSeconds(secs);
       if (secs === 0) {
+        stopDraw.current = true;
         setQuizLodingShow(true);
         setText("아쉽습니다. 정답은: " + answer);
         setTimeout(() => {
@@ -31,6 +35,7 @@ export default function Quiz(props) {
             return;
           }
           setSeconds(TIMER);
+          stopDraw.current = false;
           setQuizNumber(quizNumber+1);
         }, 3250);
       }
@@ -46,9 +51,12 @@ export default function Quiz(props) {
     setQuizNumber(quizNumber + 1);
 
     return () => {
+      stopDraw.current = true;
       setMounted(false);
     }
-  }, [])
+  }, []);
+
+
 
   // on quiz number updated
   useEffect(async () => {
@@ -74,9 +82,8 @@ export default function Quiz(props) {
       let currentColor = '#000';
       let currentWidth = 5;
       const draw = (i) => {
-        console.log(seconds);
         setTimeout(() => {
-          if (i === canvasPaths.length) {
+          if (i === canvasPaths.length || stopDraw.current) {
             return;
           }
       
@@ -151,6 +158,9 @@ export default function Quiz(props) {
               e.preventDefault();
               const userAnswer = e.target[0].value;
               console.log(userAnswer);
+              if (userAnswer === answer) {
+                stopDraw.current = true;
+              }
             }}>
               <input
                 className="quiz__form__answer"
