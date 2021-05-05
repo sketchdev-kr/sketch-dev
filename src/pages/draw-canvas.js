@@ -41,7 +41,7 @@ export default function DrawCanvas(props) {
     const pickColor = (color) => {
         setColor(color);
         currentWidth = color == '#FFF' ? 30 : 5;
-        canvasPaths.push({ type: "colorPick", color: currentColor });
+        canvasPaths.push({ type: "colorPick", color: color });
         canvasPaths.push({ type: "widthPick", width: currentWidth });
     }
 
@@ -90,11 +90,12 @@ export default function DrawCanvas(props) {
         <form onSubmit={async (e) => {
             e.preventDefault();
 
-            console.log(JSON.stringify(canvasPaths));
-            alert(word);
-            // const result = await axios.post("https://api.sketchdev.kr/internal/sketches", {});
-            // console.log(result);
-            // alert("성공! " + result);
+            const result = await axios.post("https://api.sketchdev.kr/internal/sketches", {
+                word: word,
+                drawPaths: canvasPaths,
+            });
+            console.log(result.data);
+            alert("성공! " + result.data);
         }}>
             <input
                 className="quiz__form__answer"
