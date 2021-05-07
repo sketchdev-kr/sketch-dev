@@ -99,6 +99,10 @@ form{
   outline: none;
   border-color: #2A4759;
 }
+.quiz__form__answer__incorrect:focus {
+  outline: none;
+  border-color: rgb(188, 62, 62);
+}
 .quiz__content__image__canvas{
   width: 530px;
   height: 350px;

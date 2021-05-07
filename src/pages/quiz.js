@@ -20,6 +20,7 @@ export default function Quiz(props) {
   const [mounted, setMounted] = useState(false);
   const [answerCount, setAnswerCount] = useState(0);
   // const [stopDraw, setStopDraw] = useState(false);
+  const [hint, setHint] = useState("");
 
   const stopDraw = useRef(false);
 
@@ -49,11 +50,13 @@ export default function Quiz(props) {
         clearInterval(countDown);
         stopDraw.current = true;
         setQuizLodingShow(true);
+        setHint(answer);
         setText("아쉽습니다. 정답은: " + answer);
         setTimeout(() => {
           if (quizNumber === TOTAL_QUIZ) {
             return;
           }
+          setHint("");
           setSeconds(TIMER);
           stopDraw.current = false;
           setQuizNumber(quizNumber+1);
@@ -82,6 +85,7 @@ export default function Quiz(props) {
   
       const res = await axios.get(`https://api.sketchdev.kr/sketches/${quizes[quizNumber-1]}`);
       setAnswer(res.data.word);
+      setHint(Array(res.data.word.length).fill('_').join(' '));
       const canvasPaths = res.data.drawPaths;
     
       let path;
@@ -147,6 +151,7 @@ export default function Quiz(props) {
             <img className="title__timer__img"src={clockImage} />
             <span className="title__timer__left">{seconds}s</span>
           </div>
+          <span>{hint}</span>
           <span className="title__score">맞춘문제: {answerCount} / {TOTAL_QUIZ} </span>
         </div>
         <div className="quiz__content">
@@ -164,24 +169,31 @@ export default function Quiz(props) {
             <form onSubmit={async (e) => {
               e.preventDefault();
               const userAnswer = e.target[0].value;
-              if (userAnswer === answer) {
-                stopDraw.current = true;
-                setSeconds(-1);
-                setAnswerCount(answerCount + 1);
-
-                stopDraw.current = true;
-                setQuizLodingShow(true);
-                setText(answer + ", 정답입니다!");
-                setTimeout(() => {
-                  if (quizNumber === TOTAL_QUIZ) {
-                    history.push('/result');
-                    return;
-                  }
-                  setSeconds(TIMER);
-                  stopDraw.current = false;
-                  setQuizNumber(quizNumber+1);
-                }, 3250);
+              e.target[0].value = "";
+              if (userAnswer.toLowerCase() !== answer.toLowerCase()) {
+                e.target[0].className = "quiz__form__answer quiz__form__answer__incorrect";
+                return;
               }
+              
+              setHint(userAnswer);
+              e.target[0].className = "quiz__form__answer";
+              stopDraw.current = true;
+              setSeconds(-1);
+              setAnswerCount(answerCount + 1);
+
+              stopDraw.current = true;
+              setQuizLodingShow(true);
+              setText(answer + ", 정답입니다!");
+              setTimeout(() => {
+                if (quizNumber === TOTAL_QUIZ) {
+                  history.push('/result');
+                  return;
+                }
+                setHint("");
+                setSeconds(TIMER);
+                stopDraw.current = false;
+                setQuizNumber(quizNumber+1);
+              }, 3250);
             }}>
               <input
                 className="quiz__form__answer"
