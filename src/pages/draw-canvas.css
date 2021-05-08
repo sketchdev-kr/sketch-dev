@@ -1,0 +1,127 @@
+
+.draw-canvas {
+  border-radius: 100px;
+  padding: 0px 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #477998;
+  box-shadow: 1px 1px 7px 2px gray;
+}
+
+.draw-canvas .title{
+  width: 100%;
+  display:flex;
+  justify-content: space-between;
+  font-size: large;
+  align-items: center;
+  padding: 7px 25px;
+  padding-top: 15px;
+  
+  box-sizing:border-box;
+}
+
+.quiz__content__image__canvas{
+  width: 530px;
+  height: 350px;
+}
+form{
+  width:100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items:center;
+}
+
+.quiz__form__answer {
+  background-color: transparent;
+  border: none;
+  width: 100%;
+  padding: 5px 0px;
+  margin: 15px 0px;
+  border-bottom: 2px solid whitesmoke;
+  font-weight: 700;
+  font-style: normal;
+  font-size: medium;
+  text-align: center;
+  transition: border-color 0.3s ease-in-out;
+}
+.quiz__form__answer::placeholder {
+  text-align: center;
+  color: rgba(0, 0, 0, 0.6);
+}
+.quiz__form__answer:focus::placeholder {
+  color: transparent;
+}
+.quiz__form__answer:focus {
+  outline: none;
+  border-color: #2A4759;
+}
+
+.quiz__form {
+  width:100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn {
+  background-color: #a8d5e2ff;
+  cursor: pointer;
+  width: 250px;
+  padding: 6px 0px;
+  margin-bottom: 7px;
+  border: 1px solid #595959;
+  border-radius: 10px;
+  font-weight: 700;
+  font-style: normal;
+  font-size: medium;
+  box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
+  transition-duration: 0.4s;
+}
+.btn:hover {
+  background-color: #f8f5f1;
+}
+.btn:focus {
+  outline: none;
+}
+.btn:active {
+  background-color: #7B9CA6;
+}
+
+
+.containerToolbar {
+	justify-content: center;
+  display: flex;
+}
+
+.colorPreview {
+	flex: 0 0 auto;
+	height: 48px;
+	width: 48px;
+	margin-right: 8px;
+	border-radius: 2px;
+	background-color: #fff
+}
+
+.containerColorColumn {
+	height: 24px;
+	flex: 0 0 auto;
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start
+}
+
+.containerColorColumn .colorItem {
+	width: 24px;
+	height: 24px;
+	cursor: pointer;
+	flex: 0 0 auto
+}
+
+.containerColorColumn .colorItem:active,
+.containerColorColumn .colorItem:hover {
+	border: 2px solid #000
+}
