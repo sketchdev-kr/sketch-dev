@@ -12,7 +12,6 @@ body {
   background-size: 256px;
 }
 
-
 @media screen and (max-width: 650px) {
   .title{
       padding: 7px 25px;

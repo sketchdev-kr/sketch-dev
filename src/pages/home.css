@@ -14,9 +14,7 @@ main {
   padding: 0px 60px;
   display: flex;
   flex-direction: column;
-  /* justify-content: space-between; */
   justify-content: space-evenly;
-
   align-items: center;
   background-color: #477998;
   box-shadow: 1px 1px 7px 2px gray;
@@ -40,7 +38,7 @@ main {
 }
 .quiz__content__image {
   position:relative;
-  max-height: 370;
+  max-height: 370px;
   display: flex;
   flex-direction: column;
   background-color: whitesmoke;
@@ -125,7 +123,7 @@ main {
     width: 95%;
     border-radius: 55px;
   }
-  .title {
+  .home-title {
     padding: 7px;
     font-weight: 700;
     font-style: normal;

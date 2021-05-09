@@ -86,7 +86,7 @@ main {
 }
 .quiz__content__image {
   position:relative;
-  max-height: 370;
+  max-height: 370px;
   display: flex;
   flex-direction: column;
   background-color: whitesmoke;

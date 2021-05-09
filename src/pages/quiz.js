@@ -147,12 +147,21 @@ export default function Quiz(props) {
     <main>
       <div className="quiz">
         <div className="title">
+          <div className="title__box timer">
           <div className="title__timer">
             <img className="title__timer__img"src={clockImage} />
             <span className="title__timer__left">{seconds}s</span>
           </div>
-          <span>{hint}</span>
+          </div>
+          
+          <div className="title__box">
+            <span>{hint}</span>
+          </div>
+          
+          <div className="title__box score">
           <span className="title__score">맞춘문제: {answerCount} / {TOTAL_QUIZ} </span>
+          </div>
+          
         </div>
         <div className="quiz__content">
           
