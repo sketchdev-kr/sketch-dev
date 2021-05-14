@@ -45,6 +45,11 @@ export default function Quiz(props) {
       if (seconds > 0) {
         setSeconds(seconds-1);
       }
+      if (seconds === 10 && answer.length > 2) {
+        const idx = Math.floor(Math.random() * answer.length);
+
+        setHint(`${hint.substring(0, 2*idx)}${answer[idx]}${hint.substring(2*idx+1)}`)
+      }
 
       if (seconds === 0) {
         clearInterval(countDown);
@@ -54,6 +59,7 @@ export default function Quiz(props) {
         setText("아쉽습니다. 정답은: " + answer);
         setTimeout(() => {
           if (quizNumber === TOTAL_QUIZ) {
+            history.push('/result');
             return;
           }
           setHint("");
