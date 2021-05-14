@@ -78,6 +78,7 @@ export default function Quiz(props) {
     if (quizNumber === 0) { return; }
     setText("Quiz. " + quizNumber);
     setTimeout(async () => {
+      paper.remove();
       paper.setup("canvas");
       setQuizLodingShow(false);
       if (seconds === 0) {
