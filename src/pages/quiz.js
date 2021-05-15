@@ -57,8 +57,11 @@ export default function Quiz(props) {
         setQuizLodingShow(true);
         setHint(answer);
         setText("아쉽습니다. 정답은: " + answer);
-        setTimeout(() => {
+        setTimeout(async () => {
           if (quizNumber === TOTAL_QUIZ) {
+            await axios.post("https://api.sketchdev.kr/user", {
+              score: (answerCount + 1) * 10,
+            });
             history.push('/result');
             return;
           }
@@ -200,8 +203,11 @@ export default function Quiz(props) {
               stopDraw.current = true;
               setQuizLodingShow(true);
               setText(answer + ", 정답입니다!");
-              setTimeout(() => {
+              setTimeout(async () => {
                 if (quizNumber === TOTAL_QUIZ) {
+                  await axios.post("https://api.sketchdev.kr/user", {
+                    score: (answerCount + 1) * 10,
+                  });
                   history.push('/result');
                   return;
                 }

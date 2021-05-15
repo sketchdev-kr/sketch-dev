@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { Link } from "react-router-dom";
 import Footer from "../components/footer";
 import "./home.css";
@@ -6,7 +6,9 @@ import "./svg.css";
 import kakao from "../img/kakaolink.png";
 import facebook from "../img/facebook.png"
 import link from "../img/link.png";
-import { motion } from "framer-motion";
+import { motion, animate } from "framer-motion";
+import axios from 'axios';
+
 
 function QuizImage(props) {
   return (
@@ -25,8 +27,32 @@ function QuizImage(props) {
   )
 };
 
+function Counter({ from, to }) {
+  const nodeRef = useRef();
+
+  useEffect(() => {
+    const node = nodeRef.current;
+
+    const controls = animate(from, to, {
+      duration: 4,
+      ease: [0.075, 0.82, 0.165, 1],
+      onUpdate(value) {
+        node.textContent = value.toFixed(0);
+      }
+    });
+
+    return () => controls.stop();
+  }, [from, to]);
+
+  return <span ref={nodeRef} />;
+}
+
 export default function Home(props) {
-    const count = "000";
+    const [count, setCount] = useState("000");
+    useEffect(async () => {
+      const userSum = await axios.get("https://api.sketchdev.kr/user/sum");
+      setCount(userSum.data.sum);
+    }, [count]);
 
     return (
       <motion.div initial="inital" animate="enter" exit="exit" variants={{ exit: { transition: { staggerChildren: 0.1 }}}}>
@@ -37,7 +63,7 @@ export default function Home(props) {
               <div className="quiz__content__image">
                 <QuizImage />
               </div>
-              <span className="participation">지금까지 {count}명이 참여했어요!</span>
+              <span className="participation">지금까지 <Counter from={0} to={count}/>명이 참여했어요!</span>
               <Link to="/quiz" className="start">
                 <input value="시작하기" type="button" className="btn__start" />
               </Link>
