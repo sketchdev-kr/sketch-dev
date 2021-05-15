@@ -45,6 +45,11 @@ export default function Quiz(props) {
       if (seconds > 0) {
         setSeconds(seconds-1);
       }
+      if (seconds === 10 && answer.length > 2) {
+        const idx = Math.floor(Math.random() * answer.length);
+
+        setHint(`${hint.substring(0, 2*idx)}${answer[idx]}${hint.substring(2*idx+1)}`)
+      }
 
       if (seconds === 0) {
         clearInterval(countDown);
@@ -52,8 +57,12 @@ export default function Quiz(props) {
         setQuizLodingShow(true);
         setHint(answer);
         setText("아쉽습니다. 정답은: " + answer);
-        setTimeout(() => {
+        setTimeout(async () => {
           if (quizNumber === TOTAL_QUIZ) {
+            await axios.post("https://api.sketchdev.kr/user", {
+              score: (answerCount + 1) * 10,
+            });
+            history.push('/result');
             return;
           }
           setHint("");
@@ -72,6 +81,7 @@ export default function Quiz(props) {
     if (quizNumber === 0) { return; }
     setText("Quiz. " + quizNumber);
     setTimeout(async () => {
+      paper.remove();
       paper.setup("canvas");
       setQuizLodingShow(false);
       if (seconds === 0) {
@@ -193,8 +203,11 @@ export default function Quiz(props) {
               stopDraw.current = true;
               setQuizLodingShow(true);
               setText(answer + ", 정답입니다!");
-              setTimeout(() => {
+              setTimeout(async () => {
                 if (quizNumber === TOTAL_QUIZ) {
+                  await axios.post("https://api.sketchdev.kr/user", {
+                    score: (answerCount + 1) * 10,
+                  });
                   history.push('/result');
                   return;
                 }
