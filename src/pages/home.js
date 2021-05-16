@@ -10,6 +10,7 @@ import { motion, animate } from "framer-motion";
 import axios from 'axios';
 
 
+
 function QuizImage(props) {
   return (
       <svg className="quiz__content__image__data" width="530" height="350" viewBox="0 0 550 432" preserveAspectRatio="xMidYmid meet" xmlns="http://www.w3.org/2000/svg">

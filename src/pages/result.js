@@ -6,6 +6,7 @@ import facebook from "../img/facebook.png"
 import link from "../img/link.png";
 import { motion } from "framer-motion";
 
+
 function QuizImage(props) {
   return (
       <svg className="quiz__content__image__data" width="530" height="350" viewBox="0 0 550 432" preserveAspectRatio="xMidYmid meet" xmlns="http://www.w3.org/2000/svg">
@@ -31,7 +32,7 @@ export default function Result(props) {
             <h2 className="title">결과</h2>
             <span className="participation">맞춘 문제</span>
             <div className="quiz__content">
-              <div className="quiz__content__image" style={{width: 530, height: 350}}>
+              <div className="quiz__content__image">
                 <span> 뭔가 드립치고 싶은데 </span>
               </div>
               <Link to="/quiz" className="start">

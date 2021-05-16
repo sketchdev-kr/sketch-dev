@@ -5,6 +5,9 @@ import clockImage from "../img/clock.png";
 import axios from 'axios';
 import paper from 'paper';
 import { motion } from 'framer-motion';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faThumbsUp, faThumbsDown } from '@fortawesome/free-solid-svg-icons';
+import { faThumbsUp as bfaTumbsUp, faThumbsDown as bfaTumbsDown} from "@fortawesome/free-regular-svg-icons";
 
 const TOTAL_QUIZ = 10;
 const TIMER = 27;
@@ -56,7 +59,7 @@ export default function Quiz(props) {
         stopDraw.current = true;
         setQuizLodingShow(true);
         setHint(answer);
-        setText("아쉽습니다. 정답은: " + answer);
+        setText("아쉽습니다.\n 정답은: " + answer);
         setTimeout(async () => {
           if (quizNumber === TOTAL_QUIZ) {
             await axios.post("https://api.sketchdev.kr/user", {
@@ -134,6 +137,12 @@ export default function Quiz(props) {
     }, 3000);
   }, [quizNumber]);
 
+  // function that handles thumbs btn
+  const handleClick = (event) =>{
+    event.target.icon = {bfaTumbsUp};
+  }
+
+
   // on quiz text updated
   useEffect(async() => {
     setTextShow(true);
@@ -169,7 +178,7 @@ export default function Quiz(props) {
           </div>
           
           <div className="title__box score">
-          <span className="title__score">맞춘문제: {answerCount} / {TOTAL_QUIZ} </span>
+          <span className="title__score">맞춘문제: <span>{answerCount}/ {TOTAL_QUIZ}</span>  </span>
           </div>
           
         </div>
@@ -179,8 +188,8 @@ export default function Quiz(props) {
             <div className={['quiz__content__loading', quizLoadingShow ? "quiz__content__loading__onshow" : ""].join(' ')}></div>
             <span className={['quiz__content__text', textShow ? "quiz__content__text__onshow" : ""].join(' ')}>{text}</span>
             <div className="thumbs">
-              <i id="thumbsUp" className="far fa-thumbs-up"></i>
-              <i id="thumbsDown" className="far fa-thumbs-down"></i>
+              <FontAwesomeIcon Onclick={handleClick} id="thumbsUp" icon={faThumbsUp} />
+              <FontAwesomeIcon id="thumbsDown" icon={faThumbsDown}/>
             </div>
             <canvas id="canvas" className="quiz__content__image__canvas"></canvas>
           </div>

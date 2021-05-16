@@ -118,7 +118,7 @@ form{
 	width: 24px;
 	height: 24px;
 	cursor: pointer;
-	flex: 0 0 auto
+	flex: 0 0 auto;
 }
 
 .containerColorColumn .colorItem:active,

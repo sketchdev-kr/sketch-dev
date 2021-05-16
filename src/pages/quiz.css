@@ -1,91 +1,108 @@
-.title{
-    width: 100%;
-    display:flex;
-    font-weight: 700;
-    justify-content: space-between;
-    font-size: large;
-    align-items: center;
-    padding: 10px 8px;
-    padding-top: 15px;
-    color: whitesmoke;
-    box-sizing: border-box;
-    /* border: 2px solid black; */
+.title {
+  width: 100%;
+  display: flex;
+  font-weight: 700;
+  justify-content: space-between;
+  font-size: large;
+  align-items: center;
+  padding: 15px 8px;
+  padding-top: 15px;
+  color: whitesmoke;
+  box-sizing: border-box;
+  /* border: 2px solid black; */
 }
-.title__box{
+.title__box {
   width: 33%;
   display: flex;
   align-items: center;
   justify-content: center;
 }
-.timer{
+.timer {
   justify-content: flex-start;
 }
-.score{
+.score {
   justify-content: flex-end;
 }
-.title__timer{
-    display: flex;
-    align-items: center;
+.title__timer {
+  display: flex;
+  align-items: center;
 }
-.title__timer__img{
-    width: 32px;
-    height: 32px;
-    margin-right: 10px;
+.title__timer__img {
+  width: 2rem;
+  height: 2rem;
+  margin-right: 10px;
 }
 .thumbs {
+  position: absolute;
+  top: 0;
+  left: 0;
   padding-top: 10px;
-  padding-right: 15px;
-  width:100%;
+  padding-right: 10px;
+  width: 100%;
   text-align: right;
-  font-size: x-large;
+  font-size: 1.3rem;
+  box-sizing: border-box;
+  z-index: 8;
+}
+#thumbsUp {
+  color: #1c9954;
+}
+#thumbsDown {
+  color: #e84545;
 }
 #thumbsUp,
-#thumbsDown{
-  padding-right: 5px;
+#thumbsDown {
+  cursor: pointer;
+  padding-right: 10px;
+  opacity: 0.6;
 }
-.quiz__content__loading{
+.quiz__content__text {
+  z-index: 7;
+}
+.quiz__content__loading {
   position: absolute;
-  width: 110%;
-  height: 110%;
+  width: 120%;
+  height: 120%;
   background-color: black;
   opacity: 0;
+  z-index: 6;
   transition: opacity 0.25s;
 }
-.quiz__content__loading.quiz__content__loading__onshow{
+.quiz__content__loading.quiz__content__loading__onshow {
   opacity: 0.5;
 }
 
-.quiz__content__text{
+.quiz__content__text {
   display: flex;
   justify-content: center;
   align-items: center;
   position: absolute;
   width: 100%;
   height: 100%;
-  color:whitesmoke;
+  color: whitesmoke;
   opacity: 1;
   font-weight: 700;
-  font-size:xx-large;
+  font-size: xx-large;
   margin-top: -100%;
   transition: margin-top 0.25s;
 }
 
-.quiz__content__text.quiz__content__text__onshow{
+.quiz__content__text.quiz__content__text__onshow {
   margin-top: 0%;
 }
 .quiz__form {
-  width:100%;
+  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
-form{
-  width:100%;
+form {
+  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items:center;
+  align-items: center;
 }
 .quiz__form__answer {
   background-color: transparent;
@@ -110,15 +127,16 @@ form{
 }
 .quiz__form__answer:focus {
   outline: none;
-  border-color: #2A4759;
+  border-color: #2a4759;
 }
 .quiz__form__answer__incorrect:focus {
   outline: none;
   border-color: rgb(188, 62, 62);
 }
-.quiz__content__image__canvas{
-  width: 530px;
-  height: 350px;
+.quiz__content__image__canvas {
+  margin-top: 5%;
+  width: 95%;
+  height: 100%;
 }
 .btn {
   background-color: #a8d5e2ff;
@@ -141,34 +159,56 @@ form{
   outline: none;
 }
 .btn:active {
-  background-color: #7B9CA6;
+  background-color: #7b9ca6;
 }
-.pass{
-    margin-bottom: 15px;
+.pass {
+  margin-bottom: 15px;
 }
+/* 모바일 반응형 */
 @media screen and (max-width: 650px) {
-  .title{
-      padding: 7px 25px;
-      width: 90%;
-      font-size: large;
+  .title {
+    font-size: 0.9rem;
+    padding: 0.7rem 1rem;
   }
-
-  .title__timer__img{
-      width: 28px;
-      height: 28px;
+  .title__timer__img {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
   }
-  .quiz__content__image__canvas{
+  .quiz__content__image__canvas {
+    width: 95%;
+  }
+  .quiz__form__answer {
     width: 90%;
+    margin: 5px 0px;
   }
-  .quiz__form__answer{
-      width: 90%;
-      margin: 5px 0px;
+  .submit {
+    margin-top: 5px;
   }
-  .thumbs{
-      position:relative;
-      top: 13px;
+}
+@media screen and (max-width: 420px) {
+  .quiz__content__image {
+    height: 200px;
   }
-  .submit{
-      margin-top: 5px;
+  .thumbs {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding-top: 2px;
+    padding-right: 7px;
+    width: 100%;
+    text-align: right;
+    font-size: 1.3rem;
+    box-sizing: border-box;
+    z-index: 8;
+  }
+  #thumbsUp,
+  #thumbsDown {
+    font-size: 1.1rem;
+  }
+  .title__score {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 }
