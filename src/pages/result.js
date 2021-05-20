@@ -33,7 +33,7 @@ export default function Result(props) {
             <span className="participation">맞춘 문제</span>
             <div className="quiz__content">
               <div className="quiz__content__image">
-                <span> 뭔가 드립치고 싶은데 </span>
+                <span> 훌륭합니다! 당신은 상위 %입니다! </span>
               </div>
               <Link to="/quiz" className="start">
                 <input value="다시하기" type="button" className="btn__start" />
