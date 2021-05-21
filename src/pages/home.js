@@ -49,14 +49,16 @@ function Counter({ from, to }) {
 }
 
 export default function Home(props) {
-    const [count, setCount] = useState("000");
+    const [participationCount, setParticipationCount] = useState("000");
+    const [quizCount, setQuizCount] = useState("00");
     useEffect(async () => {
       const userSum = await axios.get("https://api.sketchdev.kr/user/sum");
-      setCount(userSum.data.sum);
-    }, [count]);
+      const quizCount = await axios.get("https://api.sketchdev.kr/sketches/count");
+      setParticipationCount(userSum.data.sum);
+      setQuizCount(quizCount.data.count);
+    }, [participationCount]);
 
     useEffect(() => {
-      
       window.Kakao.Link.createScrapButton({
         container: '#kakao-share' ,
         requestUrl: 'https://sketchdev.kr',
@@ -72,10 +74,9 @@ export default function Home(props) {
               <div className="quiz__content__image">
                 <QuizImage />
               </div>
-              <span className="participation">지금까지 <Counter from={0} to={count}/>명이 참여했어요!</span>
-              <Link to="/quiz" className="start">
-                <input value="시작하기" type="button" className="btn__start" />
-              </Link>
+              <span className="participation">지금까지 <Counter from={0} to={participationCount}/>명이 참여했어요!</span>
+              <Link to="/quiz" className="start"><input value="시작하기" type="button" className="btn__start" /></Link>
+              <span className="quizCount">{quizCount}문제에 도전해보세요! </span>
               <div className="share">
                 <h4 className="share__text">공유하기</h4>
                 <div className="share__method">
