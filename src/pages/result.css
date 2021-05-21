@@ -1,0 +1,132 @@
+
+.result {
+  border-radius: 50px;
+  padding: 0px 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  background-color: #477998;
+  box-shadow: 1px 1px 7px 2px gray;
+}
+
+.result__title {
+  width: 100%;
+  font-weight: 700;
+  font-style: normal;
+  font-size: xx-large;
+  color: whitesmoke;
+  text-align: center;
+  padding: 15px 0px;
+}
+
+.result__content {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.result__content__board {
+  width: 530px;
+  height: 350px;
+  position:relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: black;
+  display: flex;
+  justify-content: center;
+  border: 6px solid gray;
+  box-sizing: border-box;
+  border-radius: 30px;
+  background-size: cover;
+  box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+}
+
+.result__content__board__span {
+  font-weight: 700;
+  font-style: normal;
+  font-size: xx-large;
+  color: whitesmoke;
+  text-align: center;
+}
+
+.quizCount {
+  margin-top: 5px;
+  font-weight: 500;
+  font-style: normal;
+  font-size: medium;
+  color: #EDEAD0;
+}
+
+
+/* 모바일 반응형 */
+@media screen and (max-width: 650px) {
+  body {
+    justify-content: flex-start;
+    width: 100vw;
+    height: 100vh;
+  }
+  main{
+    margin-top: 5px;
+    width: 100vw;
+  }
+  .result {
+    padding: 0px;
+    width: 90%;
+    border-radius: 2rem;
+  }
+  .result__title {
+    padding: 7px;
+    font-weight: 700;
+    font-style: normal;
+    font-size: x-large;
+  }
+  .result__content {
+    width: 100%;
+    padding: 0px;
+  }
+  .result__content__board {
+    width: 90%;
+  }
+  .result__content__board__span {
+    width: 100%;
+    font-weight: 700;
+    font-style: normal;
+    font-size: x-large;
+    padding: 0px 0px;
+  }
+  .quiz__content__loading__onshow,
+  .quiz__content__text {
+    font-size: 1px;
+    text-align: center;
+  }
+  .quiz__content__image__data {
+    height: 100%;
+  }
+  .btn__start{
+    padding: 5px 0px;
+  }
+  .share-wrapper {
+    width:27px;
+    height:27px;
+  }
+  .shareicon{
+    width:25px;
+    height:25px;
+  }
+  footer{
+   margin-top: 25px;
+   width:95%;
+  }
+}
+@media screen and (max-width: 320px) {
+  .result__content__board {
+    height: 200px;
+  }
+}
