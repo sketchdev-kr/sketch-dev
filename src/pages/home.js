@@ -8,7 +8,7 @@ import facebook from "../img/facebook.png"
 import link from "../img/link.png";
 import { motion, animate } from "framer-motion";
 import axios from 'axios';
-
+import {CopyToClipboard} from 'react-copy-to-clipboard';
 
 
 function QuizImage(props) {
@@ -55,6 +55,14 @@ export default function Home(props) {
       setCount(userSum.data.sum);
     }, [count]);
 
+    useEffect(() => {
+      
+      window.Kakao.Link.createScrapButton({
+        container: '#kakao-share' ,
+        requestUrl: 'https://sketchdev.kr',
+      })
+    }, []);
+
     return (
       <motion.div initial="inital" animate="enter" exit="exit" variants={{ exit: { transition: { staggerChildren: 0.1 }}}}>
         <main>
@@ -71,9 +79,21 @@ export default function Home(props) {
               <div className="share">
                 <h4 className="share__text">공유하기</h4>
                 <div className="share__method">
-                  <a href="#"><img className="kakao shareicon" src={kakao} /></a>
-                  <a href="#"><img className="facebook shareicon" src={facebook} /></a>
-                  <a href="#"><img className="link shareicon" src={link} /></a>
+                  <button id="kakao-share" className="share-wrapper">
+                    <img className="kakao shareicon" src={kakao} />
+                  </button>
+                  <button className="share-wrapper" onClick={() => {
+                    window.open(`https://www.facebook.com/sharer/sharer.php?u=${window.location.href}`, '페이스북에 공유하기', 'width=600,height=800,location=no,status=no,scrollbars=yes');
+                  }}>
+                    <img className="facebook shareicon" src={facebook} />
+                  </button>
+                  <CopyToClipboard text={window.location.href}
+                    onCopy={() => alert("링크가 클립보드에 복사되었어요!")}
+                  >
+                    <button className="share-wrapper">
+                      <img className="link shareicon" src={link} />
+                    </button>
+                  </CopyToClipboard>
                 </div>
               </div>
             </div>

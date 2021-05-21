@@ -112,13 +112,30 @@ main {
   width: 100%;
   margin: 10px 0px;
 }
-.kakao {
-  width: 32px;
-  height: 32px;
+.share-wrapper {
+  background: transparent;
+  border: none;
+  padding: 0;
+  width: 34px;
+  height: 34px;
   margin-right: 25px;
 }
+.share-wrapper:focus {
+  outline: transparent;
+}
+.share-wrapper:hover {
+  background: black;
+}
+.kakao {
+  margin: 1px 1px;
+  width: 32px;
+  height: 32px;
+}
 .facebook {
+  margin: 1px 1px;
   background-color: whitesmoke;
+  width: 32px;
+  height: 32px;
   margin-right: 25px;
 }
 
@@ -162,6 +179,10 @@ main {
   }
   .btn__start{
     padding: 5px 0px;
+  }
+  .share-wrapper {
+    width:27px;
+    height:27px;
   }
   .shareicon{
     width:25px;
