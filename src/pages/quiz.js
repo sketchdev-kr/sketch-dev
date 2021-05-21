@@ -178,7 +178,7 @@ export default function Quiz(props) {
           </div>
           
           <div className="title__box score">
-          <span className="title__score">맞춘문제: <span>{answerCount}/ {TOTAL_QUIZ}</span>  </span>
+          <span className="title__score">맞춘문제: <span>{answerCount} / {TOTAL_QUIZ}</span>  </span>
           </div>
           
         </div>
