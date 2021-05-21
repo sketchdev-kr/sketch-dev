@@ -3,6 +3,7 @@ import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 import "./App.css";
 import Header from "./components/header";
 import CheckCanvas from "./pages/check-canvas";
+import Draw from "./pages/draw";
 import DrawCanvas from "./pages/draw-canvas";
 import Home from "./pages/home";
 import Quiz from "./pages/quiz";
@@ -20,6 +21,7 @@ function App() {
                 <Route path="/" exact component={Home} />
                 <Route path="/draw-canvas" component={DrawCanvas} />
                 <Route path="/check-canvas" component={CheckCanvas} />
+                <Route path="/draw" component={Draw} />
                 <Route path="/quiz" component={Quiz} />
                 <Route path="/result" component={Result} />
                 <Redirect path="/*" to="/" />
