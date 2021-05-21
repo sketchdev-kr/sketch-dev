@@ -88,7 +88,7 @@ export default function DrawCanvas(props) {
     </div>
     <div className="quiz__form">
         <form onSubmit={async (e) => {
-            e.preventDefault();
+            // e.preventDefault();
 
             const result = await axios.post("https://api.sketchdev.kr/internal/sketches", {
                 word: word,
