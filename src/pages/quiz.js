@@ -188,7 +188,7 @@ export default function Quiz(props) {
             <div className={['quiz__content__loading', quizLoadingShow ? "quiz__content__loading__onshow" : ""].join(' ')}></div>
             <span className={['quiz__content__text', textShow ? "quiz__content__text__onshow" : ""].join(' ')}>{text}</span>
             <div className="thumbs">
-              <FontAwesomeIcon Onclick={handleClick} id="thumbsUp" icon={faThumbsUp} />
+              <FontAwesomeIcon onClick={handleClick} id="thumbsUp" icon={faThumbsUp} />
               <FontAwesomeIcon id="thumbsDown" icon={faThumbsDown}/>
             </div>
             <canvas id="canvas" className="quiz__content__image__canvas"></canvas>
