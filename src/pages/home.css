@@ -171,11 +171,11 @@ main {
   .quiz__content__image {
     width: 90%;
   }
-  .quiz__content__loading__onshow,
+  /* .quiz__content__loading__onshow,
   .quiz__content__text {
     font-size: 1px;
     text-align: center;
-  }
+  } */
   .quiz__content__image__data {
     height: 100%;
   }
