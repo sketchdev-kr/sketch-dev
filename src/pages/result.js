@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useRef } from "react";
 import axios from 'axios';
 import { Link } from "react-router-dom";
+import queryString from "query-string";
 import Footer from "../components/footer";
 import kakao from "../img/kakaolink.png";
 import facebook from "../img/facebook.png"
@@ -9,12 +10,35 @@ import { motion } from "framer-motion";
 import {CopyToClipboard} from 'react-copy-to-clipboard';
 import "./result.css";
 
+function randRange(start, end) {
+    return Math.floor(Math.random() * (end - start +1) + start)
+}
+
+function calcRating(score) {
+    if(score > 90)  return randRange(1, 20)
+    if(score > 80)  return randRange(20, 30)
+    if(score > 60)  return randRange(30, 60)
+    if(score > 40)  return randRange(60, 80)
+    return randRange(80, 100)
+}
 
 export default function Result(props) {
   const [quizCount, setQuizCount] = useState("00");
+  const [score, setScore] = useState(0);
+  const [correctCount, setCorrectCount] = useState(0);
+  const [rating, setRating] = useState(0);
+
     useEffect(async () => {
       const quizCount = await axios.get("https://api.sketchdev.kr/sketches/count");
       setQuizCount(quizCount.data.count);
+
+      const query = queryString.parse(props.location.search);
+      setCorrectCount(query.corrected ?? 0)
+      setScore(query.score ?? 0)
+
+      // TODO: Implement real rating
+      // Workaround methodology for show rating to user
+      setRating(calcRating(query.score ?? 0))
     }, [quizCount]);
 
     useEffect(() => {
@@ -24,16 +48,15 @@ export default function Result(props) {
       })
     }, []);
 
-
     return (
       <motion.div initial="exit" animate="enter" exit="exit" variants={{ exit: { transition: { staggerChildren: 0.1 }}}}>
         <main>
           <div className="result">
-            <h2 className="result__title">결과</h2>
+            <h2 className="result__title">결과 {correctCount} 문제</h2>
             <div className="result__content">
               <div className="result__content__board">
                 <span className="result__content__board__span"> 대단하시군요 </span>
-                <span className="result__content__board__span"> 당신은 상위 %입니다! </span>
+                <span className="result__content__board__span"> 당신은 상위 {rating}%입니다! </span>
 
                 <Link to="/draw" className="start">
                   <input value="그림 그려보실래요?" type="button" className="btn__start" />
