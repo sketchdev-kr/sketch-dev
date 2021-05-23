@@ -63,6 +63,17 @@
   font-size: medium;
   color: #EDEAD0;
 }
+.start{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+.btn__start{
+  width: 70%;
+  min-width: 100px;
+  box-sizing: border-box;
+}
 
 
 /* 모바일 반응형 */
@@ -115,6 +126,9 @@
   footer{
    margin-top: 25px;
    width:95%;
+  }
+  .result__content__board__span__rating{
+    display: inline-block;
   }
 }
 @media screen and (max-width: 320px) {

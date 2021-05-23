@@ -54,7 +54,7 @@ export default function Result(props) {
             <div className="result__content">
               <div className="result__content__board">
                 <span className="result__content__board__span"> 대단하시군요 </span>
-                <span className="result__content__board__span"> 당신은 상위 {rating}%입니다! </span>
+                <span className="result__content__board__span"> 당신은 상위 <span class="result__content__board__span__rating">{rating}%입니다!</span></span>
 
                 <Link to="/draw" className="start">
                   <input value="그림 그려보실래요?" type="button" className="btn__start" />
