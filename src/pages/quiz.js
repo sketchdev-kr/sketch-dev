@@ -62,10 +62,12 @@ export default function Quiz(props) {
         setText("아쉽습니다.\n 정답은: " + answer);
         setTimeout(async () => {
           if (quizNumber === TOTAL_QUIZ) {
-            await axios.post("https://api.sketchdev.kr/user", {
+            const createUserResponse = await axios.post("https://api.sketchdev.kr/user", {
               score: (answerCount + 1) * 10,
             });
-            history.push('/result');
+            const user = createUserResponse.data;
+            const userId = user.userId;
+            history.push(`/result?user_id=${userId}`);
             return;
           }
           setHint("");
