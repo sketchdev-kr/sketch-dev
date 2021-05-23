@@ -3,6 +3,8 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+window.Kakao.init("8f8c9110e34f25695db5007642dc6e7d");
+
 ReactDOM.render(
   <React.StrictMode>
     <App />

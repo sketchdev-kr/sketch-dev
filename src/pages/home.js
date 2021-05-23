@@ -8,7 +8,7 @@ import facebook from "../img/facebook.png"
 import link from "../img/link.png";
 import { motion, animate } from "framer-motion";
 import axios from 'axios';
-
+import {CopyToClipboard} from 'react-copy-to-clipboard';
 
 
 function QuizImage(props) {
@@ -49,31 +49,48 @@ function Counter({ from, to }) {
 }
 
 export default function Home(props) {
-    const [count, setCount] = useState("000");
+    const [participationCount, setParticipationCount] = useState("000");
     useEffect(async () => {
       const userSum = await axios.get("https://api.sketchdev.kr/user/sum");
-      setCount(userSum.data.sum);
-    }, [count]);
+      setParticipationCount(userSum.data.sum);
+    }, [participationCount]);
+
+    useEffect(() => {
+      window.Kakao.Link.createScrapButton({
+        container: '#kakao-share' ,
+        requestUrl: window.location.href,
+      })
+    }, []);
 
     return (
       <motion.div initial="inital" animate="enter" exit="exit" variants={{ exit: { transition: { staggerChildren: 0.1 }}}}>
         <main>
           <div className="quiz">
-            <h2 className="home-title">개발자 캐치마인드</h2>
+            <h2 className="quiz__title">개발자 캐치마인드</h2>
             <div className="quiz__content">
               <div className="quiz__content__image">
                 <QuizImage />
               </div>
-              <span className="participation">지금까지 <Counter from={0} to={count}/>명이 참여했어요!</span>
-              <Link to="/quiz" className="start">
-                <input value="시작하기" type="button" className="btn__start" />
-              </Link>
+              <span className="participation">지금까지 <Counter from={0} to={participationCount}/>명이 참여했어요!</span>
+              <Link to="/quiz" className="start"><input value="시작하기" type="button" className="btn__start" /></Link>
               <div className="share">
                 <h4 className="share__text">공유하기</h4>
                 <div className="share__method">
-                  <a href="#"><img className="kakao shareicon" src={kakao} /></a>
-                  <a href="#"><img className="facebook shareicon" src={facebook} /></a>
-                  <a href="#"><img className="link shareicon" src={link} /></a>
+                  <button id="kakao-share" className="share-wrapper">
+                    <img className="kakao shareicon" src={kakao} />
+                  </button>
+                  <button className="share-wrapper" onClick={() => {
+                    window.open(`https://www.facebook.com/sharer/sharer.php?u=${window.location.href}`, '페이스북에 공유하기', 'width=600,height=800,location=no,status=no,scrollbars=yes');
+                  }}>
+                    <img className="facebook shareicon" src={facebook} />
+                  </button>
+                  <CopyToClipboard text={window.location.href}
+                    onCopy={() => alert("링크가 클립보드에 복사되었어요!")}
+                  >
+                    <button className="share-wrapper">
+                      <img className="link shareicon" src={link} />
+                    </button>
+                  </CopyToClipboard>
                 </div>
               </div>
             </div>

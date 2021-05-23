@@ -25,7 +25,7 @@ main {
   background-color: #477998;
   box-shadow: 1px 1px 7px 2px gray;
 }
-.home-title {
+.quiz__title {
   width: 100%;
   font-weight: 700;
   font-style: normal;
@@ -90,6 +90,7 @@ main {
   font-size: medium;
   transition-duration: 0.4s;
 }
+
 .btn__start:hover {
   background-color: #f8f5f1;
 }
@@ -112,13 +113,31 @@ main {
   width: 100%;
   margin: 10px 0px;
 }
+.share-wrapper {
+  background: transparent;
+  border: none;
+  padding: 0;
+  width: 34px;
+  height: 34px;
+  margin-left: 12px;
+  margin-right: 12px;
+}
+.share-wrapper:focus {
+  outline: transparent;
+}
+.share-wrapper:hover {
+  background: black;
+}
 .kakao {
+  margin: 1px 1px;
   width: 32px;
   height: 32px;
-  margin-right: 25px;
 }
 .facebook {
+  margin: 1px 1px;
   background-color: whitesmoke;
+  width: 32px;
+  height: 32px;
   margin-right: 25px;
 }
 
@@ -152,16 +171,20 @@ main {
   .quiz__content__image {
     width: 90%;
   }
-  .quiz__content__loading__onshow,
+  /* .quiz__content__loading__onshow,
   .quiz__content__text {
     font-size: 1px;
     text-align: center;
-  }
+  } */
   .quiz__content__image__data {
     height: 100%;
   }
   .btn__start{
     padding: 5px 0px;
+  }
+  .share-wrapper {
+    width:27px;
+    height:27px;
   }
   .shareicon{
     width:25px;
