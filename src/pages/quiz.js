@@ -214,10 +214,12 @@ export default function Quiz(props) {
               setText(answer + ", 정답입니다!");
               setTimeout(async () => {
                 if (quizNumber === TOTAL_QUIZ) {
+                  const corrected = (answerCount + 1)
+                  const score = corrected * 10
                   await axios.post("https://api.sketchdev.kr/user", {
-                    score: (answerCount + 1) * 10,
+                    score,
                   });
-                  history.push('/result');
+                  history.push(`/result?score=${score}&corrected=${corrected}`);
                   return;
                 }
                 setHint("");
