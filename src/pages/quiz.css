@@ -137,6 +137,7 @@ form {
   margin-top: 5%;
   width: 95%;
   height: 100%;
+  border: 2px solid black;
 }
 .btn {
   background-color: #a8d5e2ff;
@@ -176,10 +177,14 @@ form {
     margin-right: 10px;
   }
   .quiz__content__image__canvas {
-    width: 95%;
+    /*width: 95%;*/
+    border: 2px solid black;
+
+    width: 230px;
   }
   .quiz__form__answer {
-    width: 90%;
+    /*width: 90%;*/
+    width: 200px;
     margin: 5px 0px;
   }
   .submit {
