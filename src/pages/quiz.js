@@ -95,12 +95,12 @@ export default function Quiz(props) {
       const originalWidth = 530;
       const canvasWidth = document.getElementById("canvas").clientWidth;
       const canvasRatio = canvasWidth / originalWidth
-  
+
       const res = await axios.get(`https://api.sketchdev.kr/sketches/${quizes[quizNumber-1]}`);
       setAnswer(res.data.word);
       setHint(Array(res.data.word.length).fill('_').join(' '));
       const canvasPaths = res.data.drawPaths;
-    
+
       let path;
       let currentColor = '#000';
       let currentWidth = 5;
@@ -109,7 +109,7 @@ export default function Quiz(props) {
           if (i === canvasPaths.length || stopDraw.current) {
             return;
           }
-      
+
           const event = canvasPaths[i];
           if (event.type === "down") {
             path = new paper.Path();
@@ -172,18 +172,18 @@ export default function Quiz(props) {
             <span className="title__timer__left">{seconds}s</span>
           </div>
           </div>
-          
+
           <div className="title__box">
             <span>{hint}</span>
           </div>
-          
+
           <div className="title__box score">
           <span className="title__score">맞춘문제: <span>{answerCount} / {TOTAL_QUIZ}</span>  </span>
           </div>
-          
+
         </div>
         <div className="quiz__content">
-          
+
           <div className="quiz__content__image">
             <div className={['quiz__content__loading', quizLoadingShow ? "quiz__content__loading__onshow" : ""].join(' ')}></div>
             <span className={['quiz__content__text', textShow ? "quiz__content__text__onshow" : ""].join(' ')}>{text}</span>
@@ -202,7 +202,7 @@ export default function Quiz(props) {
                 e.target[0].className = "quiz__form__answer quiz__form__answer__incorrect";
                 return;
               }
-              
+
               setHint(userAnswer);
               e.target[0].className = "quiz__form__answer";
               stopDraw.current = true;
@@ -216,10 +216,12 @@ export default function Quiz(props) {
                 if (quizNumber === TOTAL_QUIZ) {
                   const corrected = (answerCount + 1)
                   const score = corrected * 10
-                  await axios.post("https://api.sketchdev.kr/user", {
+                  const createUserResponse = await axios.post("https://api.sketchdev.kr/user", {
                     score,
                   });
-                  history.push(`/result?score=${score}&corrected=${corrected}`);
+                  const user = createUserResponse.data;
+                  const userId = user.userId;
+                  history.push(`/result?user_id=${userId}`);
                   return;
                 }
                 setHint("");

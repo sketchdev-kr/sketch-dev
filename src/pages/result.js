@@ -10,17 +10,6 @@ import { motion } from "framer-motion";
 import {CopyToClipboard} from 'react-copy-to-clipboard';
 import "./result.css";
 
-function randRange(start, end) {
-    return Math.floor(Math.random() * (end - start +1) + start)
-}
-
-function calcRating(score) {
-    if(score > 90)  return randRange(1, 20)
-    if(score > 80)  return randRange(20, 30)
-    if(score > 60)  return randRange(30, 60)
-    if(score > 40)  return randRange(60, 80)
-    return randRange(80, 100)
-}
 
 export default function Result(props) {
   const [quizCount, setQuizCount] = useState("00");
@@ -33,12 +22,16 @@ export default function Result(props) {
       setQuizCount(quizCount.data.count);
 
       const query = queryString.parse(props.location.search);
-      setCorrectCount(query.corrected ?? 0)
-      setScore(query.score ?? 0)
 
-      // TODO: Implement real rating
-      // Workaround methodology for show rating to user
-      setRating(calcRating(query.score ?? 0))
+      const userId = query.user_id
+      const getUserResponse = await axios.get(`https://api.sketchdev.kr/user/${userId}`);
+      const user = getUserResponse.data;
+      const userRating = user.rating
+      const userScore = user.score;
+
+      setRating(userRating)
+      setScore(userScore)
+      setCorrectCount(userScore / 10)
     }, [quizCount]);
 
     useEffect(() => {
