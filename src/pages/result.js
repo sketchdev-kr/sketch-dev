@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useRef } from "react";
+import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 import { Link } from "react-router-dom";
 import queryString from "query-string";
@@ -12,6 +13,7 @@ import "./result.css";
 
 
 export default function Result(props) {
+  const history = useHistory();
   const [quizCount, setQuizCount] = useState("00");
   const [score, setScore] = useState(0);
   const [correctCount, setCorrectCount] = useState(0);
@@ -24,6 +26,9 @@ export default function Result(props) {
       const query = queryString.parse(props.location.search);
 
       const userId = query.user_id
+      if (!userId) {
+        history.push('/')
+      }
       const getUserResponse = await axios.get(`https://api.sketchdev.kr/user/${userId}`);
       const user = getUserResponse.data;
       const userRating = user.rating
