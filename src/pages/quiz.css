@@ -134,9 +134,13 @@ form {
   border-color: rgb(188, 62, 62);
 }
 .quiz__content__image__canvas {
-  margin-top: 5%;
+<<<<<<< HEAD
   width: 95%;
   height: 100%;
+=======
+  border: 2px solid black;
+  width: 95%;
+>>>>>>> 49c42f6ec6889e1ce070555f47250610245a63b1
 }
 .btn {
   background-color: #a8d5e2ff;
@@ -167,8 +171,8 @@ form {
 /* 모바일 반응형 */
 @media screen and (max-width: 650px) {
   .title {
-    font-size: 0.9rem;
-    padding: 0.7rem 1rem;
+    font-size: 0.8rem;
+    padding: 0.5rem 1rem;
   }
   .title__timer__img {
     width: 20px;
@@ -176,10 +180,18 @@ form {
     margin-right: 10px;
   }
   .quiz__content__image__canvas {
-    width: 95%;
+<<<<<<< HEAD
+    /*width: 95%;*/
+    height: 100%;
+=======
+    /* width: 95%; */
+    border: 2px solid black;
+    width: 300px;
+>>>>>>> 49c42f6ec6889e1ce070555f47250610245a63b1
   }
   .quiz__form__answer {
-    width: 90%;
+    /*width: 90%;*/
+    width: 260px;
     margin: 5px 0px;
   }
   .submit {

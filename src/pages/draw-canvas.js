@@ -58,7 +58,7 @@ export default function DrawCanvas(props) {
         <div className="colorPreview" data-toggle="tooltip" data-placement="top" title="" style={{ backgroundColor: currentColor }} data-original-title="Color preview"></div>
         <div className="containerColorbox" data-toggle="tooltip" data-placement="top" title="" data-original-title="Select a color">
             <div className="containerColorColumn">
-                <div className="colorItem" style={{background: '#FFF'}} onClick={() => pickColor('#FFF')}></div>
+                <div className="colorItem" style={{background: '#F5F5F5'}} onClick={() => pickColor('#FFF')}></div>
                 <div className="colorItem" style={{background: '#C1C1C1'}} onClick={() => pickColor('#C1C1C1')}></div>
                 <div className="colorItem" style={{background: '#EF130B'}} onClick={() => pickColor('#EF130B')}></div>
                 <div className="colorItem" style={{background: '#FF7100'}} onClick={() => pickColor('#FF7100')}></div>
