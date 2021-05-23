@@ -134,10 +134,8 @@ form {
   border-color: rgb(188, 62, 62);
 }
 .quiz__content__image__canvas {
-  margin-top: 5%;
   width: 95%;
   height: 100%;
-  border: 2px solid black;
 }
 .btn {
   background-color: #a8d5e2ff;
@@ -178,13 +176,11 @@ form {
   }
   .quiz__content__image__canvas {
     /*width: 95%;*/
-    border: 2px solid black;
-
-    width: 230px;
+    height: 100%;
   }
   .quiz__form__answer {
     /*width: 90%;*/
-    width: 200px;
+    width: 260px;
     margin: 5px 0px;
   }
   .submit {
