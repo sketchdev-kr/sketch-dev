@@ -15,10 +15,18 @@ export default function Draw(props) {
 
     useEffect(() => {
         paper.setup("canvas");
+        canvasPaths.length = 0;
+        return () => {
+            canvasPaths.length = 0;
+        }
     }, []);
 
     let path;
     useEffect(() => {
+        const originalWidth = 530;
+        const canvasWidth = document.getElementById("canvas").clientWidth;
+        const canvasRatio = originalWidth / canvasWidth;
+
         const tool = new paper.Tool();
         tool.minDistance = 5;
         tool.activate();
@@ -30,19 +38,19 @@ export default function Draw(props) {
             console.log(currentColor);
             path.add(event.point);
             
-            canvasPaths.push({ type: "down", x: event.point.x, y: event.point.y });
+            canvasPaths.push({ type: "down", x: event.point.x * canvasRatio, y: event.point.y * canvasRatio });
         }
 
         tool.onMouseDrag = (event) => {
             // Add a point to the path every time the mouse is dragged
             path.add(event.point);
-            canvasPaths.push({ type: "drag", x: event.point.x, y: event.point.y });
+            canvasPaths.push({ type: "drag", x: event.point.x * canvasRatio, y: event.point.y * canvasRatio });
         }
     }, [currentColor]);
     
     const pickColor = (color) => {
         setColor(color);
-        currentWidth = color == '#FFF' ? 30 : 5;
+        currentWidth = color == '#F5F5F5' ? 30 : 5;
         canvasPaths.push({ type: "colorPick", color: color });
         canvasPaths.push({ type: "widthPick", width: currentWidth });
     }
@@ -72,7 +80,7 @@ export default function Draw(props) {
           <div className="colorPreview" data-toggle="tooltip" data-placement="top" title="" style={{ backgroundColor: currentColor }} data-original-title="Color preview"></div>
           <div className="containerColorbox" data-toggle="tooltip" data-placement="top" title="" data-original-title="Select a color">
               <div className="containerColorColumn">
-                  <div className="colorItem" style={{background: '#FFF'}} onClick={() => pickColor('#FFF')}></div>
+                  <div className="colorItem" style={{background: '#F5F5F5'}} onClick={() => pickColor('#F5F5F5')}></div>
                   <div className="colorItem" style={{background: '#C1C1C1'}} onClick={() => pickColor('#C1C1C1')}></div>
                   <div className="colorItem" style={{background: '#EF130B'}} onClick={() => pickColor('#EF130B')}></div>
                   <div className="colorItem" style={{background: '#FF7100'}} onClick={() => pickColor('#FF7100')}></div>
