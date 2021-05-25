@@ -1,0 +1,10 @@
+.drawShare {
+  margin-top: 2px;
+  margin-bottom: 2px;
+  width: 60%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}

@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
 import { useHistory } from 'react-router-dom';
-import "./draw-canvas.css";
+import "./draw.css";
 import paper from "paper";
 import { motion } from 'framer-motion';
 
@@ -118,7 +118,7 @@ export default function Draw(props) {
               });
               console.log(result.data);
               alert("참여 감사드립니다!");
-              history.push("/")
+              history.push(`/draw?id=${result.data.id}`)
           }}>
               <input
                   className="quiz__form__answer"
