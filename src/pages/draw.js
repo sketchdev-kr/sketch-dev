@@ -4,6 +4,7 @@ import { useHistory } from 'react-router-dom';
 import "./draw.css";
 import paper from "paper";
 import { motion } from 'framer-motion';
+import ReactGA from 'react-ga';
 
 
 let currentWidth = 5;
@@ -16,6 +17,10 @@ export default function Draw(props) {
     useEffect(() => {
         paper.setup("canvas");
         canvasPaths.length = 0;
+        ReactGA.event({
+            category: 'draw',
+            action: `canvas`
+        });
         return () => {
             canvasPaths.length = 0;
         }

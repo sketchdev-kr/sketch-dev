@@ -8,6 +8,7 @@ import { motion } from 'framer-motion';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faThumbsUp, faThumbsDown } from '@fortawesome/free-solid-svg-icons';
 import { faThumbsUp as bfaTumbsUp, faThumbsDown as bfaTumbsDown} from "@fortawesome/free-regular-svg-icons";
+import ReactGA from 'react-ga';
 
 const TOTAL_QUIZ = 10;
 const TIMER = 27;
@@ -33,6 +34,10 @@ export default function Quiz(props) {
     const quizesRes = await axios.get("https://api.sketchdev.kr/sketches/random");
     setQuizes(quizesRes.data.ids);
     setQuizNumber(quizNumber + 1);
+    ReactGA.event({
+      category: 'Quiz',
+      action: 'Started'
+    });
 
     return () => {
       stopDraw.current = true;
@@ -60,6 +65,10 @@ export default function Quiz(props) {
         setQuizLodingShow(true);
         setHint(answer);
         setText("아쉽습니다.\n 정답은: " + answer);
+        ReactGA.event({
+          category: 'Quiz',
+          action: `Fail ${answer}`
+        });
         setTimeout(async () => {
           if (quizNumber === TOTAL_QUIZ) {
             const createUserResponse = await axios.post("https://api.sketchdev.kr/user", {
@@ -85,6 +94,11 @@ export default function Quiz(props) {
   useEffect(async () => {
     if (quizNumber === 0) { return; }
     setText("Quiz. " + quizNumber);
+    ReactGA.event({
+      category: 'Quiz',
+      action: `Started ${quizNumber}`
+    });
+
     setTimeout(async () => {
       paper.remove();
       paper.setup("canvas");
@@ -214,6 +228,10 @@ export default function Quiz(props) {
               stopDraw.current = true;
               setQuizLodingShow(true);
               setText(answer + ", 정답입니다!");
+              ReactGA.event({
+                category: 'Quiz',
+                action: `Success ${answer}`
+              });
               setTimeout(async () => {
                 if (quizNumber === TOTAL_QUIZ) {
                   const corrected = (answerCount + 1)

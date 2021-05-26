@@ -7,6 +7,7 @@ import Draw from "./pages/draw";
 import Home from "./pages/home";
 import Quiz from "./pages/quiz";
 import Result from "./pages/result";
+import RouteChangeTracker from "./RouteChangeTracker";
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
           )}
         ></Route>
       </BrowserRouter>
+      <RouteChangeTracker/>
     </div>
   );
 }

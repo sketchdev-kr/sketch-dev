@@ -10,6 +10,8 @@ import link from "../img/link.png";
 import { motion } from "framer-motion";
 import {CopyToClipboard} from 'react-copy-to-clipboard';
 import "./result.css";
+import ReactGA from 'react-ga';
+
 
 
 export default function Result(props) {
@@ -34,12 +36,16 @@ export default function Result(props) {
       const userRating = user.rating
       const userScore = user.score;
 
-      setRating(userRating)
-      setScore(userScore)
-      setCorrectCount(userScore / 10)
+      setRating(userRating);
+      setScore(userScore);
+      setCorrectCount(userScore / 10);
     }, [quizCount]);
 
     useEffect(() => {
+      ReactGA.event({
+        category: 'result',
+        action: `Share when ${correctCount}`
+      });
       window.Kakao.Link.createScrapButton({
         container: '#kakao-share' ,
         requestUrl: window.location.href,
