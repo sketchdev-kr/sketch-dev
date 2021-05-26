@@ -24,12 +24,13 @@ function App() {
                 <Route path="/quiz" component={Quiz} />
                 <Route path="/result" component={Result} />
                 <Redirect path="/*" to="/" />
+
+                <RouteChangeTracker/>
               </Switch>
             </AnimatePresence>
           )}
         ></Route>
       </BrowserRouter>
-      <RouteChangeTracker/>
     </div>
   );
 }
