@@ -118,7 +118,7 @@ export default function Draw(props) {
               });
               console.log(result.data);
               alert("참여 감사드립니다!");
-              history.push(`/draw?id=${result.data.id}`)
+              history.push(`/draw-share?id=${result.data.id}`)
           }}>
               <input
                   className="quiz__form__answer"
