@@ -14,13 +14,16 @@ export default function Draw(props) {
     const [ word, setWord ] = useState("");
     const [ currentColor, setColor ] = useState("#000");
 
-    useEffect(() => {
+    useEffect(async () => {
         paper.setup("canvas");
         canvasPaths.length = 0;
         ReactGA.event({
             category: 'draw',
             action: `canvas`
         });
+
+        const keywordRandom = await axios.get("https://api.sketchdev.kr/keywords/random");
+        setWord(keywordRandom.data);
         return () => {
             canvasPaths.length = 0;
         }
