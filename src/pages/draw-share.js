@@ -9,6 +9,7 @@ import {CopyToClipboard} from 'react-copy-to-clipboard';
 import { Link } from "react-router-dom";
 import "./draw-share.css";
 import ReactGA from 'react-ga';
+import Footer from "../components/footer";
 
 
 export default function DrawShare(props) {
@@ -120,6 +121,7 @@ export default function DrawShare(props) {
             </Link>
           </div>
         </div>
+        <Footer/>
       </main>
   )
 }
