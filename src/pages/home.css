@@ -74,8 +74,14 @@ main {
 }
 /* 시작버튼 */
 .start {
-  margin-top: 10px;
-  width: 60%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-top: 12px;
+}
+.startDraw {
+  margin-top: 4px;
 }
 .btn__start {
   background-color: #dbf9f0ff;
@@ -99,19 +105,12 @@ main {
 .share {
   width: 100%;
 }
-.share__text {
-  font-weight: 500;
-  font-style: normal;
-  font-size: medium;
-  color: whitesmoke;
-  text-align: center;
-  
-}
 .share__method {
   display: flex;
   justify-content: center;
   width: 100%;
-  margin: 10px 0px;
+  margin-top: 4px;
+  margin-bottom: 8px;
 }
 .share-wrapper {
   background: transparent;
@@ -119,8 +118,8 @@ main {
   padding: 0;
   width: 34px;
   height: 34px;
-  margin-left: 12px;
-  margin-right: 12px;
+  margin-left: 8px;
+  margin-right: 8px;
 }
 .share-wrapper:focus {
   outline: transparent;
@@ -139,6 +138,27 @@ main {
   width: 32px;
   height: 32px;
   margin-right: 25px;
+}
+.community {
+  margin-top: 4px;
+}
+.community__text {
+  font-weight: 500;
+  font-style: normal;
+  font-size: medium;
+  color: whitesmoke;
+  text-align: center;
+}
+.community__list {
+  margin-top: 4px;
+  margin-bottom: 4px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+.community__wrapper {
+  margin-left: 4px;
+  margin-right: 4px;
 }
 
 
@@ -184,6 +204,19 @@ main {
   .shareicon{
     width:25px;
     height:25px;
+  }
+  .participation {
+    margin-top: 2px;
+  }
+  .start {
+    margin-top: 4px;
+    margin-bottom: 0px;
+  }
+  .startDraw {
+    margin-top: 0px
+  }
+  .community {
+    margin-top: 2px;
   }
 }
 @media screen and (max-width: 320px) {

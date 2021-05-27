@@ -9,6 +9,9 @@ import link from "../img/link.png";
 import { motion, animate } from "framer-motion";
 import axios from 'axios';
 import {CopyToClipboard} from 'react-copy-to-clipboard';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCommentDots } from '@fortawesome/free-regular-svg-icons';
+import { faInstagram } from '@fortawesome/free-brands-svg-icons';
 
 
 function QuizImage(props) {
@@ -73,9 +76,8 @@ export default function Home(props) {
               </div>
               <span className="participation">지금까지 <Counter from={0} to={participationCount}/>명이 참여했어요!</span>
               <Link to="/quiz" className="start"><input value="시작하기" type="button" className="btn__start" /></Link>
-              <Link to="/draw" className="start"><input value="그림그리기" type="button" className="btn__start" /></Link>
+              <Link to="/draw" className="start startDraw"><input value="그림 그려보실래요?" type="button" className="btn__start" /></Link>
               <div className="share">
-                {/* <h4 className="share__text">공유하기</h4> */}
                 <div className="share__method">
                   <button id="kakao-share" className="share-wrapper">
                     <img className="kakao shareicon" src={kakao} />
@@ -94,6 +96,13 @@ export default function Home(props) {
                   </CopyToClipboard>
                 </div>
               </div>
+              {/* <div className="community">
+                <h4 className="community__text">커뮤니티</h4>
+                <div className="community__list">
+                  <div className="community__wrapper"><a href="https://open.kakao.com/me/sketchdev"><FontAwesomeIcon icon={faCommentDots} color={"white"} size="lg" /></a></div>
+                  <div className="community__wrapper"><a href="https://www.instagram.com/sketchdevkr"><FontAwesomeIcon icon={faInstagram} color={"white"} size="lg" /></a></div>
+                </div>
+              </div> */}
             </div>
           </div>
           <Footer />
