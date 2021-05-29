@@ -5,8 +5,7 @@ import reportWebVitals from './reportWebVitals';
 import ReactGA from 'react-ga';
 
 
-const TRACKING_ID = "G-FDPNDJ5PVN"; // 
-ReactGA.initialize("G-FDPNDJ5PVN");
+ReactGA.initialize("UA-161265021-2");
 
 window.Kakao.init("8f8c9110e34f25695db5007642dc6e7d");
 
