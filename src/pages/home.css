@@ -100,13 +100,14 @@ main {
 .btn__startDraw {
   background-color: #477998;
   color: #f8f5f1;
+  border: 2px solid #dbf9f0ff;
 }
 
 .btn__start:hover {
   background-color: #f8f5f1;
 }
 .btn__startDraw:hover {
-  background-color: #477998;
+  color: black;
 }
   
 /* 공유하기 */
