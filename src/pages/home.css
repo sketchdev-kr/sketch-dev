@@ -97,8 +97,16 @@ main {
   transition-duration: 0.4s;
 }
 
+.btn__startDraw {
+  background-color: #477998;
+  color: #f8f5f1;
+}
+
 .btn__start:hover {
   background-color: #f8f5f1;
+}
+.btn__startDraw:hover {
+  background-color: #477998;
 }
   
 /* 공유하기 */

@@ -76,7 +76,7 @@ export default function Home(props) {
               </div>
               <span className="participation">지금까지 <Counter from={0} to={participationCount}/>명이 참여했어요!</span>
               <Link to="/quiz" className="start"><input value="시작하기" type="button" className="btn__start" /></Link>
-              <Link to="/draw" className="start startDraw"><input value="그림 그려보실래요?" type="button" className="btn__start" /></Link>
+              <Link to="/draw" className="start startDraw"><input value="그림 그려보실래요?" type="button" className="btn__start btn__startDraw" /></Link>
               <div className="share">
                 <div className="share__method">
                   <button id="kakao-share" className="share-wrapper">
