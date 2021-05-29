@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "sketchdev",
+  "name": "스케치데브 - 개발자 캐치마인드",
   "icons": [
     {
       "src": "favicon.ico",

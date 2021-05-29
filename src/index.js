@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import ReactGA from 'react-ga';
+import * as serviceWorker from './serviceWorker';
 
 
 ReactGA.initialize("UA-161265021-2");
@@ -20,3 +21,5 @@ ReactDOM.render(
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();
+
+serviceWorker.register();
