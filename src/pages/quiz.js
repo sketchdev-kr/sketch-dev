@@ -10,7 +10,8 @@ import { faThumbsUp, faThumbsDown } from '@fortawesome/free-solid-svg-icons';
 import { faThumbsUp as bfaTumbsUp, faThumbsDown as bfaTumbsDown} from "@fortawesome/free-regular-svg-icons";
 import ReactGA from 'react-ga';
 
-const TOTAL_QUIZ = 10;
+const TOTAL_QUIZ = 5;
+const SCORE_PER_QUIZ = 20;
 const TIMER = 27;
 
 export default function Quiz(props) {
@@ -72,7 +73,7 @@ export default function Quiz(props) {
         setTimeout(async () => {
           if (quizNumber === TOTAL_QUIZ) {
             const createUserResponse = await axios.post("https://api.sketchdev.kr/user", {
-              score: (answerCount + 1) * 10,
+              score: (answerCount + 1) * SCORE_PER_QUIZ,
             });
             const user = createUserResponse.data;
             const userId = user.userId;
@@ -235,7 +236,7 @@ export default function Quiz(props) {
               setTimeout(async () => {
                 if (quizNumber === TOTAL_QUIZ) {
                   const corrected = (answerCount + 1)
-                  const score = corrected * 10
+                  const score = corrected * SCORE_PER_QUIZ;
                   const createUserResponse = await axios.post("https://api.sketchdev.kr/user", {
                     score,
                   });
