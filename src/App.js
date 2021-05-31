@@ -55,7 +55,7 @@ function App() {
             // width: 300, height: 50, backgroundColor: "black",
           }} />
           <div id="sketchdev-kr_970x250" style={{
-            width: 970, height: 250, backgroundColor: "black",
+            // width: 970, height: 250, backgroundColor: "black",
           }} />
         </div>
       </div>
