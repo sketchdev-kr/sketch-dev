@@ -12,10 +12,22 @@ body {
   background-size: 256px;
 }
 
+.banner {
+  padding: 0px;
+  margin-top: 16px;
+  width: 95%;
+  height: 15vh;
+  border-radius: 5px;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
 /* @media screen and (max-width: 650px) {
-  .title{
+  .banner{
       padding: 7px 25px;
-      width: 95%;
+      padding: 0px;
       font-size: large;
   }
 } */

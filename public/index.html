@@ -86,6 +86,21 @@
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
     <title>스케치데브 - 개발자 캐치마인드</title>
+    <script>
+      window.aiptag = window.aiptag || {cmd: []};
+      aiptag.cmd.display = aiptag.cmd.display || [];
+      aiptag.cmd.player = aiptag.cmd.player || [];
+
+      //CMP tool settings
+      aiptag.cmp = {
+        show: true,
+        position: "centered",  //centered, bottom
+        button: true,
+        buttonText: "Privacy settings",
+        buttonPosition: "bottom-left" //bottom-left, bottom-right, top-left, top-right
+      }
+    </script>
+  	<script async src="//api.adinplay.com/libs/aiptag/pub/SKD/sketchdev.kr/tag.min.js"></script>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
