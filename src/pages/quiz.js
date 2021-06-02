@@ -29,16 +29,21 @@ export default function Quiz(props) {
 
   const stopDraw = useRef(false);
 
+  const [showThumbup, setShowThumbup] = useState(false);
+  const [showThumbdown, setShowThumbdown] = useState(false);
+
   // on initial mount
   useEffect(async () => {
     setMounted(true);
     const quizesRes = await axios.get("https://api.sketchdev.kr/sketches/random");
     setQuizes(quizesRes.data.ids);
     setQuizNumber(quizNumber + 1);
-    ReactGA.event({
-      category: 'Quiz',
-      action: 'Started'
-    });
+    // ReactGA.event({
+    //   category: 'Quiz',
+    //   action: 'Started'
+    // });
+    setShowThumbup(false);
+    setShowThumbdown(false);
 
     return () => {
       stopDraw.current = true;
@@ -94,6 +99,7 @@ export default function Quiz(props) {
   // on quiz number updated
   useEffect(async () => {
     if (quizNumber === 0) { return; }
+
     setText("Quiz. " + quizNumber);
     ReactGA.event({
       category: 'Quiz',
@@ -107,6 +113,8 @@ export default function Quiz(props) {
       if (seconds === 0) {
         return;
       }
+      setShowThumbup(true);
+      setShowThumbdown(true);
 
 
       const originalWidth = 530;
@@ -154,11 +162,6 @@ export default function Quiz(props) {
     }, 3000);
   }, [quizNumber]);
 
-  // function that handles thumbs btn
-  const handleClick = (event) =>{
-    event.target.icon = {bfaTumbsUp};
-  }
-
 
   // on quiz text updated
   useEffect(async() => {
@@ -204,13 +207,27 @@ export default function Quiz(props) {
           <div className="quiz__content__image">
             <div className={['quiz__content__loading', quizLoadingShow ? "quiz__content__loading__onshow" : ""].join(' ')}></div>
             <span className={['quiz__content__text', textShow ? "quiz__content__text__onshow" : ""].join(' ')}>{text}</span>
-            <div className="thumbs">
-              <FontAwesomeIcon onClick={handleClick} id="thumbsUp" icon={faThumbsUp} />
-              <FontAwesomeIcon id="thumbsDown" icon={faThumbsDown}/>
-            </div>
             <canvas id="canvas" className="quiz__content__image__canvas"></canvas>
           </div>
           <div className="quiz__form">
+            <div className="thumbs">
+              { showThumbup ? <FontAwesomeIcon onClick={async () => {
+                setShowThumbdown(false);
+                if (showThumbup && showThumbdown) {
+                  // first try to push the button
+                  await axios.post(`https://api.sketchdev.kr/sketches/${quizes[quizNumber-1]}/like`, {
+                    status: true,
+                  });
+                }
+              }} id="thumbsUp" icon={faThumbsUp} /> : null } 
+              { showThumbdown ? <FontAwesomeIcon onClick={async () => {
+                setShowThumbup(false);
+                // first try to push the button
+                await axios.post(`https://api.sketchdev.kr/sketches/${quizes[quizNumber-1]}/unlike`, {
+                  status: true,
+                });
+              }} id="thumbsDown" icon={faThumbsDown}/> : null }
+            </div>
             <form onSubmit={async (e) => {
               e.preventDefault();
               const userAnswer = e.target[0].value;

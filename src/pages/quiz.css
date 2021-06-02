@@ -33,22 +33,34 @@
   margin-right: 10px;
 }
 .thumbs {
-  position: absolute;
+  /* position: absolute;
   top: 0;
   left: 0;
   padding-top: 10px;
-  padding-right: 10px;
+  padding-right: 10px; */
   width: 100%;
-  text-align: right;
+  text-align: center;
   font-size: 1.3rem;
   box-sizing: border-box;
-  z-index: 8;
+  /* z-index: 8; */
 }
 #thumbsUp {
   color: #1c9954;
+  padding-right: 2px;
+}
+#thumbsUp:hover {
+  background-color: black;
+  border: 1px solid #595959;
+  border-radius: 10px;
 }
 #thumbsDown {
   color: #e84545;
+  padding-left: 2px;
+}
+#thumbsDown:hover {
+  background-color: black;
+  border: 1px solid #595959;
+  border-radius: 10px;
 }
 #thumbsUp,
 #thumbsDown {
@@ -192,13 +204,13 @@ form {
     height: 200px;
   }
   .thumbs {
-    position: absolute;
+    /* position: absolute;
     top: 0;
     left: 0;
     padding-top: 2px;
-    padding-right: 7px;
+    padding-right: 7px; */
     width: 100%;
-    text-align: right;
+    text-align: center;
     font-size: 1.3rem;
     box-sizing: border-box;
     z-index: 8;
