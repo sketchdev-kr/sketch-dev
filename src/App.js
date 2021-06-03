@@ -9,6 +9,7 @@ import Quiz from "./pages/quiz";
 import Result from "./pages/result";
 import RouteChangeTracker from "./RouteChangeTracker";
 import { useEffect } from "react";
+import Navigation from "./components/nav";
 
 function App() {
   useEffect(() => {
@@ -31,6 +32,7 @@ function App() {
         alignItems: "center",
         flexDirection: "column",
       }}>
+        <Navigation />
         <Header />
         <BrowserRouter>
           <Route
@@ -49,7 +51,7 @@ function App() {
               </AnimatePresence>
             )}
           ></Route>
-        </BrowserRouter>
+        </BrowserRouter>  
         <div className="banner" >
           <div id="sketchdev-kr_300x50" style={{
             // width: 300, height: 50, backgroundColor: "black",
@@ -66,7 +68,7 @@ function App() {
         <div id="sketchdev-kr_300x250" />
       </div> */}
     </div>
-  );
+    );
 }
 
 export default App;
