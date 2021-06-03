@@ -94,7 +94,7 @@ export default function DrawShare(props) {
               <canvas id="canvas" className="quiz__content__image__canvas"></canvas>
             </div>
             <div className="share">
-              <h4 className="share__text">그림 공유하기</h4>
+              <h4 className="share__text">그림을 공유해보세요!</h4>
               <div className="share__method">
                 <button id="kakao-share" className="share-wrapper">
                   <img className="kakao shareicon" src={kakao} />
