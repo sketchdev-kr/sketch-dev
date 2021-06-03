@@ -41,7 +41,7 @@ export default function Result(props) {
 
       setRating(userRating);
       setScore(userScore);
-      setCorrectCount(userScore / 10);
+      setCorrectCount(userScore / 20);
     }, [quizCount]);
 
     useEffect(() => {
