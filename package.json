@@ -50,5 +50,5 @@
   "devDependencies": {
     "@types/react-router-dom": "^5.1.7"
   },
-  "homepage": "https://sketchdev-kr.github.io/sketch-dev/"
+  "homepage": "https://sketchdev.kr"
 }
