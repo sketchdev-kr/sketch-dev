@@ -1,5 +1,5 @@
 import { AnimatePresence } from "framer-motion";
-import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
+import { HashRouter as Router, Switch, Route, Redirect } from "react-router-dom";
 import "./App.css";
 import Header from "./components/header";
 import DrawShare from "./pages/draw-share";
@@ -32,7 +32,7 @@ function App() {
         flexDirection: "column",
       }}>
         <Header />
-        <BrowserRouter>
+        <Router>
           <Route
             render={({ location }) => (
               <AnimatePresence exitBeforeEnter initial={false}>
@@ -49,7 +49,7 @@ function App() {
               </AnimatePresence>
             )}
           ></Route>
-        </BrowserRouter>
+        </Router>
         <div className="banner" >
           <div id="sketchdev-kr_300x50" style={{
             // width: 300, height: 50, backgroundColor: "black",
